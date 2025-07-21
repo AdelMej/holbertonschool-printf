@@ -77,7 +77,7 @@ int print_string(va_list args)
 {
 	unsigned int index;
 	char *str = va_arg(args, char *);
-	int length;
+	int length = 0;
 
 	if (str == NULL)
 		return (-1);
@@ -103,7 +103,7 @@ int print_number(va_list args)
 	int number = va_arg(args, int);
 	int digits[11]; /* max integer can only hold 10 digit plus one for overflow */
 	unsigned int index = 0;
-	int i, length;
+	int i, length = 0;
 
 	/* dealing with negative number */
 	if (number < 0)
