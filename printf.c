@@ -22,6 +22,10 @@ int _printf(const char *format, ...)
 	};
 	if (format == NULL)
 		return (-1); /* Error string is null */
+	
+	if (format[0] == '\0')
+		return (0);
+
 	va_start(args, format);
 	for (index = 0; format[index] != '\0'; index++)
 	{
@@ -29,8 +33,13 @@ int _printf(const char *format, ...)
 		{
 			i = 0;
 
-			if (format[index + 1] == '%')
+			if (format[index + 1] == '%') /* printing % if next character is a % */
+			{
+				_putchar('%');
 				index++;
+				length++;
+				continue;
+			}
 
 			while (table_print[i].specifier != '\0')
 			{
@@ -46,7 +55,9 @@ int _printf(const char *format, ...)
 				_putchar(format[index]);
 		}
 		else
+		{
 			_putchar(format[index]);
+		}
 		length++;
 	}
 	va_end(args);
@@ -101,19 +112,20 @@ int print_string(va_list args)
 int print_number(va_list args)
 {
 	int number = va_arg(args, int);
-	int digits[11]; /* max integer can only hold 10 digit plus one for overflow */
-	unsigned int index = 0;
+	int digits[12]; /* max integer can only hold 10 digit plus one for overflow */
+	unsigned int index = 0, num = 0;
 	int i, length = 0;
 
+	num = number;
 	/* dealing with negative number */
 	if (number < 0)
 	{
 		_putchar('-');
-		number = -number;
+		num = -number;
 	}
 
 	/* printing zero and leaving if zero is given */
-	if (number == 0)
+	if (num == 0)
 	{
 		_putchar('0');
 		return (1);
@@ -121,10 +133,10 @@ int print_number(va_list args)
 
 	/* adding last digits to digits aray */
 	do {
-		digits[index] = number % 10;
-		number /= 10;
+		digits[index] = num % 10;
+		num /= 10;
 		index++;
-	} while (number > 0);
+	} while (num > 0);
 
 	/* printing number starting from the first digits (index - 1) */
 	for (i = index - 1; i >= 0; i--)
@@ -133,4 +145,15 @@ int print_number(va_list args)
 		length++;
 	}
 	return (length);
+}
+
+int print_null()
+{
+	char *str = "(null)";
+	unsigned int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		_putchar(str[i]);
+
+	return (i);
 }
