@@ -13,7 +13,6 @@ int _printf(const char *format, ...)
 {
 	unsigned int index, i = 0, length = 0;
 	va_list daVa;
-
 	handler_t table_print[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -21,12 +20,8 @@ int _printf(const char *format, ...)
 		{'i', print_number},
 		{'\0', NULL}
 	};
-
-
-
 	if (format == NULL)
 		return (1); /* Error string is null */
-
 	va_start(daVa, format);
 	for (index = 0; format[index] != '\0'; index++)
 	{
@@ -48,14 +43,10 @@ int _printf(const char *format, ...)
 				i++;
 			}
 			if (table_print[i].specifier == '\0')/* skipping unknown specifier */
-			{
 				_putchar(format[index]);
-			}
 		}
 		else
-		{
 			_putchar(format[index]);
-		}
 		length++;
 	}
 	va_end(daVa);
@@ -64,7 +55,7 @@ int _printf(const char *format, ...)
 
 /**
 * print_char - a function to print a char
-* @daVa a va_list
+* @daVa: a va_list
 *
 * Return: void
 */
@@ -78,7 +69,7 @@ void print_char(va_list daVa)
 /**
 * print_string - helper function to print a string
 * @daVa: a va_list
-* 
+*
 * Return: void
 */
 void print_string(va_list daVa)
@@ -118,8 +109,7 @@ void print_number(va_list daVa)
 	}
 
 	/* adding last digits to digits aray */
-	do
-	{
+	do {
 		digits[index] = number % 10;
 		number /= 10;
 		index++;

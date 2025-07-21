@@ -1,14 +1,16 @@
-#include <stdarg.h>
 #ifndef PRINTF_MAIN_H
 #define PRINTF_MAIN_H
+#include <stdarg.h>
+
 /**
-* sruct print_handler - a structure to handle printing
+* struct print_handler - a structure to handle printing
 * depending on a specifier
 * @specifier: a character defining the function to use
 * @print: a function pointer to a function that handles printing
 * the associated format
 */
-struct print_handler{
+struct print_handler
+{
 	char specifier;
 	void (*print)(va_list);
 };
