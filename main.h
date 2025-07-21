@@ -1,6 +1,6 @@
+#include <stdarg.h>
 #ifndef PRINTF_MAIN_H
 #define PRINTF_MAIN_H
-
 /**
 * sruct print_handler - a structure to handle printing
 * depending on a specifier
@@ -11,7 +11,7 @@
 struct print_handler{
 	char specifier;
 	void (*print)(va_list);
-}
+};
 
 typedef struct print_handler handler_t;
 
