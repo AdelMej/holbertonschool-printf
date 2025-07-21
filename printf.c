@@ -1,8 +1,11 @@
-#include "../include/main.h";
+#include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include <unitstd.h>
 
+/**
+ *
+ *
+ */
 int _printf(const char *format, ...)
 {
 	unsigned int index, pos;
@@ -17,27 +20,51 @@ int _printf(const char *format, ...)
 	{
 		if (format[index] == '%')
 		{
-			if (format[index + 1] == 'c')
+			if (format[index + 1] == 'c') /* printing a char */
 			{
 				_putchar(va_arg(daVa, int));
-				index++;
+				index ++;
 			}
-
-			if (format[index + 1] == '%')
+			else if (format[index + 1] == '%') /* printing a % */
 			{
 				_putchar('%');
-				index++;
+				index ++;
 			}
-
-			if (format[index + 1] == 's')
+			else if (format[index + 1] == 's') /* printing a stored string */
 			{
 				str = va_arg(daVa, char *);
-				for (pos = 0; str[pos] != '\0'; pos++);
+				for (pos = 0; str[pos] != '\0'; pos++)
 					_putchar(str[pos]);
 				index++;
 			}
+			else /* skipping unknown specifier */
+			{
+				index++;
+			}
 		}
-		_putchar(format[index]);
+		else
+		{
+			_putchar(format[index]);
+		}
 	}
 	va_end(daVa);
+	return (0);
+}
+
+
+void print_char(char c)
+{
+	_putchar(c);
+}
+
+void print_string(char *str)
+{
+	unsigned int index;
+	for (index = 0; str[index] != '\0'; index++)
+		_putchar(str[index]);
+}
+
+void print_number()
+{
+	
 }
