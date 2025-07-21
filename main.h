@@ -32,12 +32,12 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 
 /* a function to print a char with a va_list */
-int print_char(va_list daVa);
+int print_char(va_list args);
 
 /* a function to print a string with a va_list */
-int print_string(va_list daVa);
+int print_string(va_list args);
 
 /* a function to print a number with a va_list */
-int print_number(va_list daVa);
+int print_number(va_list args);
 
 #endif
