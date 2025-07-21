@@ -5,3 +5,4 @@
 !printf.c
 !_putchar.c
 !main.h
+!get_print_function.c

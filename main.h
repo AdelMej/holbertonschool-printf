@@ -1,7 +1,6 @@
 #ifndef PRINTF_MAIN_H
 #define PRINTF_MAIN_H
 #include <stdarg.h>
-
 /**
 * struct print_handler - a structure to handle printing
 * depending on a specifier
@@ -17,11 +16,20 @@ struct print_handler
 
 typedef struct print_handler handler_t;
 
+/* defining a print_func_t for readability */
+typedef int (*print_func_t)(va_list);
+
+/* function for getting a function pointer */
+print_func_t get_print_function(char c);
+
+/* a function to handle different format */
+int format_handler(char specifier, va_list args);
+
 /* a function that mimic the behavior of printf */
 int _printf(const char *format, ...);
 
 /* a function to print a character */
-void _putchar(char c);
+int _putchar(char c);
 
 /* a function to print a char with a va_list */
 int print_char(va_list daVa);
