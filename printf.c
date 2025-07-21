@@ -3,9 +3,12 @@
 #include <stdarg.h>
 
 /**
- *
- *
- */
+* _printf - a function that mimic standard printf
+* @format: a string to print with format
+*
+* Return: 0 if it succeed
+* 1 if it fails
+*/
 int _printf(const char *format, ...)
 {
 	unsigned int index, pos;
@@ -51,20 +54,71 @@ int _printf(const char *format, ...)
 	return (0);
 }
 
-
-void print_char(char c)
+/**
+* print_char - a function to print a char
+* @daVa a va_list
+*
+* Return: void
+*/
+void print_char(va_list daVa)
 {
+	char c = va_arg(daVa, int);
+
 	_putchar(c);
 }
 
-void print_string(char *str)
+/**
+* print_string - gelper function to print a string
+* @daVa: a va_list
+* 
+* Return: void
+*/
+void print_string(va_list daVa)
 {
 	unsigned int index;
+	char *str = va_arg(daVa, char *);
+
 	for (index = 0; str[index] != '\0'; index++)
 		_putchar(str[index]);
 }
 
-void print_number()
+/**
+* print_number - helper function to print a number
+* @daVa: a va_list
+*
+* Return: void
+*/
+void print_number(va_list daVa)
 {
-	
+	int number = va_arg(daVa, int);
+	int digits[11]; /* max iteger can only hold 10 digit and a negative */
+	unsigned int index = 0;
+	int i;
+
+	/* dealing with negative number */
+	if (number < 0)
+	{
+		_putchar('-');
+		number = -number;
+	}
+	/* printing zero and leaving if zero is given */
+	if (number == 0)
+	{
+		_putchar('0');
+		return;
+	}
+
+	/* adding last digits to digits aray */
+	do
+	{
+		digits[index] = number % 10;
+		number /= 10;
+		index++;
+	} while (number > 0);
+
+	/* printing number starting from the first digits (index - 1) */
+	for (i = index - 1; i >= 0; i--)
+	{
+		_putchar(digits[i] + '0');
+	}
 }
