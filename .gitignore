@@ -1,7 +1,7 @@
 /*
 !.gitignore
 !README.md
-!/include
-!/src
-!/test
 !Makefile
+!printf.c
+!_putchar.c
+!main.h
