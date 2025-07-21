@@ -11,9 +11,19 @@
 */
 int _printf(const char *format, ...)
 {
-	unsigned int index, pos;
+	unsigned int index, i = 0 ;
 	char *str;
 	va_list daVa;
+
+	handler_t table_print[] = {
+		{'c', print_char},
+		{"s", print_string},
+		{'d', print_number},
+		{'i', print_number},
+		{NULL, NULL}
+	};
+
+
 
 	if (format == NULL)
 		return (1); /* Error string is null */
@@ -23,24 +33,16 @@ int _printf(const char *format, ...)
 	{
 		if (format[index] == '%')
 		{
-			if (format[index + 1] == 'c') /* printing a char */
+			while (table_print[i].specifier != NULL)
 			{
-				_putchar(va_arg(daVa, int));
-				index ++;
+				if (table_print[i].specifier == format[index] + 1)
+				{
+					table_print[i].print(daVa);
+					index++;
+					break;
+				}
 			}
-			else if (format[index + 1] == '%') /* printing a % */
-			{
-				_putchar('%');
-				index ++;
-			}
-			else if (format[index + 1] == 's') /* printing a stored string */
-			{
-				str = va_arg(daVa, char *);
-				for (pos = 0; str[pos] != '\0'; pos++)
-					_putchar(str[pos]);
-				index++;
-			}
-			else /* skipping unknown specifier */
+			if (table_print[i].specifier == NULL)/* skipping unknown specifier */
 			{
 				index++;
 			}
