@@ -75,11 +75,10 @@ int print_string(va_list args)
 int print_number(va_list args)
 {
 	int number = va_arg(args, int);
-	int digits[10]; /* max integer can only hold 10 digit plus one for overflow */
+	int digits[10]; /* max integer can only hold 10 digit */
 	unsigned int index = 0, num = 0;
 	int i, length = 0;
 
-	/* dealing with negative number */
 	if (number < 0)
 	{
 		_putchar('-');
@@ -98,7 +97,7 @@ int print_number(va_list args)
 		return (1);
 	}
 
-	/* adding last digits to digits aray */
+	/* adding last digits to digits array */
 	do {
 		digits[index] = num % 10;
 		num /= 10;
