@@ -11,16 +11,15 @@
 */
 int _printf(const char *format, ...)
 {
-	unsigned int index, i = 0 ;
-	char *str;
+	unsigned int index, i = 0, length = 0;
 	va_list daVa;
 
 	handler_t table_print[] = {
 		{'c', print_char},
-		{"s", print_string},
+		{'s', print_string},
 		{'d', print_number},
 		{'i', print_number},
-		{NULL, NULL}
+		{'\0', NULL}
 	};
 
 
@@ -33,27 +32,34 @@ int _printf(const char *format, ...)
 	{
 		if (format[index] == '%')
 		{
-			while (table_print[i].specifier != NULL)
+			i = 0;
+
+			if (format[index + 1] == '%')
+				index++;
+
+			while (table_print[i].specifier != '\0')
 			{
-				if (table_print[i].specifier == format[index] + 1)
+				if (table_print[i].specifier == format[index + 1])
 				{
 					table_print[i].print(daVa);
 					index++;
 					break;
 				}
+				i++;
 			}
-			if (table_print[i].specifier == NULL)/* skipping unknown specifier */
+			if (table_print[i].specifier == '\0')/* skipping unknown specifier */
 			{
-				index++;
+				_putchar(format[index]);
 			}
 		}
 		else
 		{
 			_putchar(format[index]);
 		}
+		length++;
 	}
 	va_end(daVa);
-	return (0);
+	return (length);
 }
 
 /**
@@ -93,7 +99,7 @@ void print_string(va_list daVa)
 void print_number(va_list daVa)
 {
 	int number = va_arg(daVa, int);
-	int digits[11]; /* max iteger can only hold 10 digit and a negative */
+	int digits[11]; /* max integer can only hold 10 digit plus one for overflow */
 	unsigned int index = 0;
 	int i;
 
@@ -103,6 +109,7 @@ void print_number(va_list daVa)
 		_putchar('-');
 		number = -number;
 	}
+
 	/* printing zero and leaving if zero is given */
 	if (number == 0)
 	{
