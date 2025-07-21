@@ -12,7 +12,7 @@
 struct print_handler
 {
 	char specifier;
-	void (*print)(va_list);
+	int (*print)(va_list);
 };
 
 typedef struct print_handler handler_t;
@@ -24,12 +24,12 @@ int _printf(const char *format, ...);
 void _putchar(char c);
 
 /* a function to print a char with a va_list */
-void print_char(va_list daVa);
+int print_char(va_list daVa);
 
 /* a function to print a string with a va_list */
-void print_string(va_list daVa);
+int print_string(va_list daVa);
 
 /* a function to print a number with a va_list */
-void print_number(va_list daVa);
+int print_number(va_list daVa);
 
 #endif

@@ -6,13 +6,13 @@
 * _printf - a function that mimic standard printf
 * @format: a string to print with format
 *
-* Return: 0 if it succeed
-* 1 if it fails
+* Return: string length if it succeed
+* -1 if it fails
 */
 int _printf(const char *format, ...)
 {
 	unsigned int index, i = 0, length = 0;
-	va_list daVa;
+	va_list args;
 	handler_t table_print[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -21,8 +21,8 @@ int _printf(const char *format, ...)
 		{'\0', NULL}
 	};
 	if (format == NULL)
-		return (1); /* Error string is null */
-	va_start(daVa, format);
+		return (-1); /* Error string is null */
+	va_start(args, format);
 	for (index = 0; format[index] != '\0'; index++)
 	{
 		if (format[index] == '%')
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			{
 				if (table_print[i].specifier == format[index + 1])
 				{
-					table_print[i].print(daVa);
+					length += table_print[i].print(args);
 					index++;
 					break;
 				}
@@ -49,50 +49,61 @@ int _printf(const char *format, ...)
 			_putchar(format[index]);
 		length++;
 	}
-	va_end(daVa);
+	va_end(args);
 	return (length);
 }
 
 /**
 * print_char - a function to print a char
-* @daVa: a va_list
+* @args: a va_list
 *
 * Return: void
 */
-void print_char(va_list daVa)
+int print_char(va_list args)
 {
-	char c = va_arg(daVa, int);
+	char c = va_arg(args, int);
 
 	_putchar(c);
+	return(1);
 }
 
 /**
 * print_string - helper function to print a string
-* @daVa: a va_list
+* @args: a va_list
 *
 * Return: void
 */
-void print_string(va_list daVa)
+int print_string(va_list args)
 {
 	unsigned int index;
-	char *str = va_arg(daVa, char *);
+	char *str = va_arg(args, char *);
+	int length;
+
+	if (str == NULL)
+		return (-1);
 
 	for (index = 0; str[index] != '\0'; index++)
+	{
 		_putchar(str[index]);
+		length++;
+	}
+
+	return (length);
 }
 
 /**
 * print_number - helper function to print a number
-* @daVa: a va_list
+* @args: a va_list
 *
-* Return: void
+* Return: the length of the print
+* -1 if failed
 */
-void print_number(va_list daVa)
+int print_number(va_list args)
 {
-	int number = va_arg(daVa, int);
+	int number = va_arg(args, int);
 	int digits[11]; /* max integer can only hold 10 digit plus one for overflow */
 	unsigned int index = 0;
-	int i;
+	int i, length;
 
 	/* dealing with negative number */
 	if (number < 0)
@@ -105,7 +116,7 @@ void print_number(va_list daVa)
 	if (number == 0)
 	{
 		_putchar('0');
-		return;
+		return (1);
 	}
 
 	/* adding last digits to digits aray */
@@ -119,5 +130,7 @@ void print_number(va_list daVa)
 	for (i = index - 1; i >= 0; i--)
 	{
 		_putchar(digits[i] + '0');
+		length++;
 	}
+	return (length);
 }
