@@ -55,7 +55,7 @@ int print_string(va_list args)
 	int length = 0;
 
 	if (str == NULL)
-		str="(null)";
+		str = "(null)";
 
 	for (index = 0; str[index] != '\0'; index++)
 	{
