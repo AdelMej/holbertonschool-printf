@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -pedantic -std=gnu89 -Wno-format
-TARGET = printf_testing
+TARGET = a.out
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
