@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
-
+#include <stdarg.h>
 /**
 * get_print_function - a function that returns a pointer to
 * a function that returns an int and takes a va_list in parameter
@@ -83,7 +83,7 @@ int print_number(va_list args)
 	if (number < 0)
 	{
 		_putchar('-');
-		num = -number;
+		num = (unsigned int)(-number); /* storing absolute value of number */
 		length++;
 	}
 	else
