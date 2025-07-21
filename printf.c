@@ -68,7 +68,7 @@ void print_char(va_list daVa)
 }
 
 /**
-* print_string - gelper function to print a string
+* print_string - helper function to print a string
 * @daVa: a va_list
 * 
 * Return: void
