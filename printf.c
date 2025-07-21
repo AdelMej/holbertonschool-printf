@@ -27,12 +27,16 @@ int _printf(const char *format, ...)
 		if (format[index] == '%')
 		{
 			if (format[index + 1] == '\0')
+			{
+				va_end(args);
 				return (-1); /* error incorrect parsing */
-
+			}
 			res = format_handler(format[index + 1], args);
 			if (res == -1)
+			{
+				va_end(args);
 				return (-1); /* failed parsing */
-
+			}
 			length += res;
 			index++; /* skip next character */
 		}
