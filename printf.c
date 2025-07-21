@@ -57,9 +57,8 @@ int _printf(const char *format, ...)
 int format_handler(char specifier, va_list args)
 {
 	print_func_t function;
-	int res;
 
-	if (specifier == '%') /* printing % if next character is a % */
+	if (specifier == '%') /* printing literal '%' */
 	{
 		_putchar('%');
 		return (1);
@@ -72,9 +71,6 @@ int format_handler(char specifier, va_list args)
 		_putchar(specifier);
 		return (2);
 	}
-	res = function(args);
-	if (res == -1) /* failed parsing */
-		return (-1);
 
-	return (res);
+	return (function(args));
 }
