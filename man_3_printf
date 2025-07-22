@@ -1,4 +1,4 @@
-.TH _PRINTF 3 "july 22, 2025" "Version 1.0" 
+.TH _PRINTF 3 "July 22, 2025" "Version 1.0"
 .SH NAME
 _printf \- function that mimics the standard printf in C
 .SH SYNOPSIS
@@ -11,17 +11,14 @@ is a custom implementation of the standard C
 function. It produces output based on a format string that can include format specifiers.
 .SH FORMAT SPECIFIERS
 .TP
-.B %c
+.B c
 Prints a single character.
 .TP
-.B %s
+.B s
 Prints a string.
 .TP
-.B %d, %i
+.B d, i
 Prints a signed decimal integer.
-.TP
-.B %%
-Prints a %
 .SH RETURN VALUE
 Returns the number of characters printed (excluding the null byte used to end output to strings).
 .SH EXAMPLES
