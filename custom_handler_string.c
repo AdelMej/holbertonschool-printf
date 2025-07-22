@@ -60,9 +60,9 @@ int custom_print_string(va_list args)
 void custom_print_hex_helper(char str)
 {
 	const char *hex_digits = "0123456789ABCDEF";
-	char byte = str;
-	int high = byte >> 4; /* getting high nibble */
-	int low = byte & 0x0F; /* getting low nibble */
+
+	int high = str >> 4; /* getting high nibble */
+	int low = str & 0x0F; /* getting low nibble */
 
 	_putchar(hex_digits[high]); /* printing high nibble */
 	_putchar(hex_digits[low]); /* printing low nibble */
