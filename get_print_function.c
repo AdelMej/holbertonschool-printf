@@ -18,6 +18,7 @@ print_func_t get_print_function(char c)
 		{'s', print_string},
 		{'d', print_number},
 		{'i', print_number},
+		{'b', print_binary},
 		{'\0', NULL}
 	};
 

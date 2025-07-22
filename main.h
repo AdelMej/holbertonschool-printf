@@ -40,4 +40,7 @@ int print_string(va_list args);
 /* a function to print a number with a va_list */
 int print_number(va_list args);
 
+int print_binary (va_list args);
+unsigned int print_binary_helper (unsigned int number, int * lenght);
+
 #endif
