@@ -20,7 +20,7 @@ int print_pointer(va_list args)
 	_putchar('0');
 	_putchar('x');
 	length = 2;
-	
+
 	if (ptr == NULL)
 	{
 		_putchar('0');
@@ -29,13 +29,14 @@ int print_pointer(va_list args)
 	address = (unsigned long)ptr;
 	print_pointer_helper(address, &length);
 
-	return length;
+	return (length);
 }
 
 /**
  * print_pointer_helper - Recursively prints an unsigned long integer
  *                       as a lowercase hexadecimal number.
  * @address: The unsigned long integer to print.
+ * @length: The length of the print
  *
  * Description:
  * Recursively divides the address by 16 and prints the hexadecimal
