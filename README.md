@@ -9,24 +9,28 @@ The principal usecase of printf is to print a string.
 
 ## Flow chart
 
+```Mermaid
+---
+config:
+  layout: dagre
+---
 flowchart TD
-    A[Start] --> B(string)
-    B --> C{printing character}
-    C --> D{is it null}
-    D --> |no| E{did we cross the null terminator}
-    E --> |no| F{did we cross a %}
-    F --> |no| G[write the character]
-    D --> |yes| H[return error]
-    E --> |yes| I[return success]
-    F --> |yes| J{what's the next character}
-    J --> |c| K[write character in argument]
-    J --> |s| L[write string in argument]
-    J --> |%| M[write %]
-    G --> |looping|E
-    K --> O[skip next character]
-    L --> O
-    M --> O
-    O --> |looping|E
+    A["Start"] --> B("_printf call")
+    B --> D{"is string null"}
+    D -- no --> E{"did we cross the null terminator"}
+    E -- no --> F{"did we cross a %"}
+    F -- no --> G["write the character"]
+    D -- yes --> H["return error"]
+    E -- yes --> I["return success"]
+    F -- yes --> J{"did we find a specifier" }
+    J -- yes --> K["print result"]
+    G -- looping --> E
+    O -- looping --> E
+    J -- no --> P["print the specifier"]
+    P --> O["skip next character"]
+    K --> O
+```
+```
 ## Feature
 ### Typical usecase : 
 
