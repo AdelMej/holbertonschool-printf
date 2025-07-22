@@ -61,4 +61,7 @@ int custom_print_string(va_list args);
 /* a function to print a pointer in hexadecimal */
 int print_pointer(va_list args);
 
+/* a function to print remaining buffered character */
+void _putchar_flush(void);
+
 #endif
