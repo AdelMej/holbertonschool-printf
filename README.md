@@ -1,8 +1,30 @@
-TITRE : printf
+# printf
 
-description de la fonction
+Welcome in our first commun project. 
 
-Flow chart
+## Description de la fonction
+
+_printf is a function trying to mimic the behavior of standard printf in C
+The principal usecase of printf is to print a string.
+Typical usecase : 
+
+``` c
+printf ("My name is toto");
+expected output : 
+$: My name is toto
+```
+
+### 
+
+With **printf** it's possible to print diferent types using specifier 
+
+Type : 
+    - Number
+    - String
+    - Character
+    - ....
+
+## Flow chart
 
 flowchart TD
     A[Start] --> B(string)
@@ -23,14 +45,14 @@ flowchart TD
     M --> O
     O --> |looping|E
 
-Feature
+## Feature
 
-Technology used
+## Technology used
 
 ------------
 
-MAN links
+## MAN links
 
-Authors and thanks
+## Authors and thanks
 
 
