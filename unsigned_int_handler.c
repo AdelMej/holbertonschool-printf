@@ -16,6 +16,12 @@ int print_binary(va_list args)
 
 	number = va_arg(args, unsigned int);
 
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+
 	print_binary_helper(number, &lenght);
 
 	return (lenght);
