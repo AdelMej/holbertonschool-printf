@@ -14,20 +14,18 @@ void print_pointer_helper(unsigned long address, int *length);
 int print_pointer(va_list args)
 {
 	void *ptr = va_arg(args, void *);
-	int length;
-	unsigned long address;
+	int length = 2;
 
 	_putchar('0');
 	_putchar('x');
-	length = 2;
 
 	if (ptr == NULL)
 	{
 		_putchar('0');
 		return (length + 1);
 	}
-	address = (unsigned long)ptr;
-	print_pointer_helper(address, &length);
+
+	print_pointer_helper((unsigned long)ptr, &length);
 
 	return (length);
 }
@@ -45,7 +43,7 @@ int print_pointer(va_list args)
  */
 void print_pointer_helper(unsigned long address, int *length)
 {
-	char *tab_hexa = "0123456789abcdef";
+	static const char *tab_hexa = "0123456789abcdef";
 
 	if (address == 0)
 		return;
