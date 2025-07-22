@@ -4,7 +4,6 @@
 void print_hexa_upper_helper(unsigned int number, int *length);
 void print_hexa_lower_helper(unsigned int number, int *length);
 
-
 /**
  * print_hexa_upper - Prints an unsigned int in uppercase hexadecimal.
  * @args: A va_list containing the unsigned int to print.
@@ -27,7 +26,6 @@ int print_hexa_upper(va_list args)
 	print_hexa_upper_helper(number, &length);
 
 	return (length);
-
 }
 
 

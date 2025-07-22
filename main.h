@@ -57,4 +57,8 @@ int print_hexa_lower(va_list args);
 
 /* a function to print a custom specifier %S with va_list */
 int custom_print_string(va_list args);
+
+/* a function to print a pointer in hexadecimal */
+int print_pointer(va_list args);
+
 #endif

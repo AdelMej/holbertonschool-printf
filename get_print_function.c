@@ -24,6 +24,7 @@ print_func_t get_print_function(char c)
 		{'x', print_hexa_lower},
 		{'X', print_hexa_upper},
 		{'S', custom_print_string},
+		{'p', print_pointer},
 		{'\0', NULL}
 	};
 
