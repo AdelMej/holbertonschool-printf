@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 /*function delaration */
-unsigned int print_binary_helper(unsigned int number, int *lenght);
+void print_binary_helper(unsigned int number, int *length);
 
 
 /**
@@ -15,7 +15,7 @@ unsigned int print_binary_helper(unsigned int number, int *lenght);
 int print_binary(va_list args)
 {
 	unsigned int number = 0;
-	int lenght = 0;
+	int length = 0;
 
 	number = va_arg(args, unsigned int);
 
@@ -25,28 +25,25 @@ int print_binary(va_list args)
 		return (1);
 	}
 
-	print_binary_helper(number, &lenght);
+	print_binary_helper(number, &length);
 
-	return (lenght);
+	return (length);
 
 }
 /**
  * print_binary_helper - function to print binary
  *
  * @number: the number
- * @lenght: size of binary
+ * @length: size of binary
  *
- * Return: lenght of the print
+ * Return: length of the print
  */
-unsigned int print_binary_helper(unsigned int number, int *lenght)
+void print_binary_helper(unsigned int number, int *length)
 {
 	if (number == 0)
-	{
-		return (0);
-	}
-	print_binary_helper(number / 2, lenght);
-	_putchar((number % 2) + '0');
-	*lenght += 1;
+		return;
 
-	return (number);
+	print_binary_helper(number / 2, length);
+	_putchar((number % 2) + '0');
+	(*length)++;
 }

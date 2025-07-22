@@ -19,7 +19,7 @@ Prints a string.
 .TP
 .B %d, %i
 Prints a signed decimal integer.
-.TP 
+.TP
 .B %b
 Prints a binary.
 .SH RETURN VALUE

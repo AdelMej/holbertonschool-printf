@@ -1,20 +1,18 @@
 #include "main.h"
 #include <stdarg.h>
-/* function delcaration*/
-unsigned int print_octale_helper(unsigned int number, int *lenght);
+/* Function declarations */
+void print_octal_helper(unsigned int number, int *length);
 
 /**
- * print_octale - function to convert to octale
+ * print_octal - Prints an unsigned int in octal format.
+ * @args: A va_list containing the unsigned int to print.
  *
- * @args: it's a va_list
- *
- * Return: length of string
+ * Return: The number of characters printed.
  */
-
-int print_octale(va_list args)
+int print_octal(va_list args)
 {
-	unsigned int number = 0;
-	int lenght = 0;
+	unsigned int number;
+	int length = 0;
 
 	number = va_arg(args, unsigned int);
 
@@ -24,28 +22,25 @@ int print_octale(va_list args)
 		return (1);
 	}
 
-	print_octale_helper(number, &lenght);
+	print_octal_helper(number, &length);
 
-	return (lenght);
-
+	return (length);
 }
+
+
 /**
- * print_octale_helper - function to print octale
+ * print_octal_helper - Recursively prints an unsigned int as octal.
+ * @number: The number to print.
+ * @length: Pointer to an int tracking the number of printed characters.
  *
- * @number: the number
- * @lenght: size of octale
- *
- * Return: lenght of the print
+ * Return: void.
  */
-unsigned int print_octale_helper(unsigned int number, int *lenght)
+void print_octal_helper(unsigned int number, int *length)
 {
 	if (number == 0)
-	{
-		return (0);
-	}
-	print_octale_helper(number / 8, lenght);
-	_putchar((number % 8) + '0');
-	*lenght += 1;
+		return;
 
-	return (number);
+	print_octal_helper(number / 8, length);
+	_putchar((number % 8) + '0');
+	(*length)++;
 }

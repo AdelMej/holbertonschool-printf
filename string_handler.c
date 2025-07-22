@@ -1,11 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
-* print_string - helper function to print a string
-* @args: a va_list
-*
-* Return: the number of character printed
-*/
+ * print_string - Prints a string.
+ * @args: A va_list containing the string to print.
+ *
+ * Return: The number of characters printed.
+ */
 int print_string(va_list args)
 {
 	unsigned int index;

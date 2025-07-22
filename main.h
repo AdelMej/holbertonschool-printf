@@ -47,7 +47,7 @@ int print_unsigned_int(va_list args);
 int print_binary(va_list args);
 
 /* a function to print an octale with va_list */
-int print_octale(va_list args);
+int print_octal(va_list args);
 
 /* a function to print an hexadecimal uppercase with va_list */
 int print_hexa_upper(va_list args);

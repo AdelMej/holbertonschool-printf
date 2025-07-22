@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
-* print_char - a function to print a char
-* @args: a va_list
-*
-* Return: void
-*/
+ * print_char - Prints a character.
+ * @args: A va_list containing the character to print.
+ *
+ * Return: Number of characters printed (always 1).
+ */
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
@@ -15,44 +15,44 @@ int print_char(va_list args)
 }
 
 /**
-* print_number - helper function to print a number
-* @args: a va_list
-*
-* Return: the length of the print
-*/
+ * print_number - Prints an integer number.
+ * @args: A va_list containing the integer to print.
+ *
+ * Return: Number of characters printed.
+ */
 int print_number(va_list args)
 {
 	int number = va_arg(args, int);
-	int digits[10]; /* max integer can only hold 10 digit */
+	int digits[10]; /* Maximum digits for an int */
 	unsigned int index = 0, num = 0;
 	int i, length = 0;
 
 	if (number < 0)
 	{
 		_putchar('-');
-		num = (unsigned int)(-number); /* storing absolute value of number */
+		num = (unsigned int)(-(long)number); /* Store absolute value */
 		length++;
 	}
 	else
 	{
-		num = number;
+		num = (unsigned int)number;
 	}
 
-	/* printing zero and leaving if zero is given */
+	/* Print '0' if number is zero */
 	if (num == 0)
 	{
 		_putchar('0');
-		return (1);
+		return (length + 1); /* Include '-' if printed */
 	}
 
-	/* adding last digits to digits array */
+	/* Store digits in reverse order */
 	do {
 		digits[index] = num % 10;
 		num /= 10;
 		index++;
 	} while (num > 0);
 
-	/* printing number starting from the first digits (index - 1) */
+	/* Print digits in correct order */
 	for (i = index - 1; i >= 0; i--)
 	{
 		_putchar(digits[i] + '0');

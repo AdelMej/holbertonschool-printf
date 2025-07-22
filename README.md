@@ -1,6 +1,6 @@
 # printf
 
-Welcome in our first commun project. 
+Welcome in our first commun project.
 
 ## Description de la fonction
 
@@ -31,16 +31,16 @@ flowchart TD
     K --> O
 ```
 ## Feature
-### Typical usecase : 
+### Typical usecase :
 
 ``` c
 printf ("My name is toto");
-expected output : 
+expected output :
 $: My name is toto
 ```
 
 ### printf with argument :
-In printf it's possible to give an infinit number of argument to the function 
+In printf it's possible to give an infinit number of argument to the function
 
 to do so printf is variadic function.
 
@@ -49,7 +49,7 @@ to do so printf is variadic function.
 int _printf(const char *format, ...);
 ```
 ### Specifier :
-With **printf** it's possible to print diferent types using specifier 
+With **printf** it's possible to print diferent types using specifier
 In order to acces a scpecifier it's typical to use **"%"** follow the specifier.
 #### Specifier usecase with number :
 ``` c
@@ -59,11 +59,11 @@ expected output :
 $: Toto age is 18 years old
 ```
 
-#### Curent handle type : 
+#### Curent handle type :
 
 **Number - String - Character - Binary**
 
-## 
+##
 
 ## Technology used
 ![Static Badge](https://img.shields.io/badge/-C-blue?style=plastic&logo=C&logoColor=white&logoSize=big)
