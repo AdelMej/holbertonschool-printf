@@ -4,6 +4,7 @@
 
 /* Function declarations */
 void print_pointer_helper(unsigned long address, int *length);
+int print_nil(void);
 
 /**
  * print_pointer - Prints a pointer address in hexadecimal format.
@@ -17,7 +18,7 @@ int print_pointer(va_list args)
 	int length = 2;
 
 	if (ptr == NULL)
-		return (print_nil);
+		return (print_nil());
 
 	_putchar('0');
 	_putchar('x');
