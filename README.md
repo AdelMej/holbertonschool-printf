@@ -6,7 +6,8 @@ Welcome in our first commun project.
 
 _printf is a function trying to mimic the behavior of standard printf in C
 The principal usecase of printf is to print a string.
-Typical usecase : 
+
+### Typical usecase : 
 
 ``` c
 printf ("My name is toto");
@@ -14,15 +15,36 @@ expected output :
 $: My name is toto
 ```
 
-### 
+### printf with argument :
+In printf it's possible to give an infinit number of argument to the function 
 
+to do so printf is variadic function.
+
+#### Prototype :
+```c
+int _printf(const char *format, ...);
+```
+### Specifier :
 With **printf** it's possible to print diferent types using specifier 
+In order to acces a scpecifier it's typical to use **"%"** follow the specifier.
+#### Specifier usecase with number :
+``` c
+int age = 18;
+printf("Toto age is %d years old \n", age);
+expected output :
+$: Toto age is 18 years old
+```
 
-Type : 
+#### Curent handle type : 
+
     - Number
     - String
     - Character
     - ....
+
+
+
+
 
 ## Flow chart
 
