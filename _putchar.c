@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 static char buffer[1024];
-static int index = 0;
+static int index;
 
 /**
  * _putchar - Writes a character to stdout using a buffer.
@@ -26,7 +26,8 @@ int _putchar(char c)
 }
 
 /**
- * _putchar_flush - Flushes the buffer by writing any remaining characters to stdout.
+ * _putchar_flush - Flushes the buffer by writing any remaining characters
+ * to stdout.
  *
  * Description: Should be called at the end of the program or before exiting
  * to ensure all buffered characters are written to stdout.
