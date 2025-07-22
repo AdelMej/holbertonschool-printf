@@ -16,14 +16,11 @@ int print_pointer(va_list args)
 	void *ptr = va_arg(args, void *);
 	int length = 2;
 
+	if (ptr == NULL)
+		return (print_nil);
+
 	_putchar('0');
 	_putchar('x');
-
-	if (ptr == NULL)
-	{
-		_putchar('0');
-		return (length + 1);
-	}
 
 	print_pointer_helper((unsigned long)ptr, &length);
 
@@ -51,4 +48,23 @@ void print_pointer_helper(unsigned long address, int *length)
 	print_pointer_helper(address / 16, length);
 	_putchar(tab_hexa[address % 16]);
 	(*length)++;
+}
+
+/**
+ * print_nil - Prints the string "(nil)".
+ *
+ * Return: The number of characters printed (always 5).
+ *
+ * Description:
+ * Used to handle printing of NULL pointers in a human-readable format,
+ * following the standard `(nil)` representation.
+ */
+int print_nil(void)
+{
+	_putchar('(');
+	_putchar('n');
+	_putchar('i');
+	_putchar('l');
+	_putchar(')');
+	return (5);
 }
