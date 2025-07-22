@@ -2,18 +2,13 @@
 #include <stdarg.h>
 #include <stdlib.h>
 /* Function declarations */
-void custom_print_hex_helper(char str);
+void custom_print_hex_helper(unsigned char str);
 
 /**
- * custom_print_string - Function to handle custom %S specifier
- * @args: va_list containing the string to print
+ * custom_print_string - Prints a string with non-printables as \xNN.
+ * @args: va_list containing the string to print.
  *
- * Return: Number of characters printed
- *
- * This function prints a string. Printable characters (ASCII 33 to 126)
- * are printed as-is. Non-printable characters are printed as \xNN,
- * where NN is the uppercase hexadecimal representation of the character.
- * If the string is NULL, prints "(null)".
+ * Return: Number of characters printed.
  */
 int custom_print_string(va_list args)
 {
@@ -27,7 +22,7 @@ int custom_print_string(va_list args)
 
 	for (i = 0; to_print[i] != '\0'; i++)
 	{
-		if (to_print[i] > 32 && to_print[i] < 127)
+		if (to_print[i] >= 32 && to_print[i] < 127)
 		{
 			_putchar(to_print[i]);
 			length++;
@@ -36,7 +31,7 @@ int custom_print_string(va_list args)
 		{
 			_putchar('\\');
 			_putchar('x');
-			custom_print_hex_helper(to_print[i]);
+			custom_print_hex_helper((unsigned char)to_print[i]);
 			length += 4;
 		}
 	}
@@ -45,7 +40,7 @@ int custom_print_string(va_list args)
 
 /**
  * custom_print_hex_helper - Prints a byte as two hexadecimal characters.
- * @str: Pointer to the unsigned char byte to print.
+ * @str: The unsigned char byte to print.
  *
  * This function takes a pointer to a byte, extracts its high and low nibbles,
  * converts each nibble to its hexadecimal character, and prints them using
@@ -55,9 +50,9 @@ int custom_print_string(va_list args)
  * The low nibble is obtained by masking the byte with 0x0F.
  *
  * Example:
- * If *str is 0xAB, the function will print "AB".
+ * If str is 0xAB, the function will print "AB".
  */
-void custom_print_hex_helper(char str)
+void custom_print_hex_helper(unsigned char str)
 {
 	const char *hex_digits = "0123456789ABCDEF";
 
