@@ -61,7 +61,7 @@ $: Toto age is 18 years old
 
 #### Curent handle type : 
 
-**Number - String - Character**
+**Number - String - Character - Binary**
 
 ## 
 

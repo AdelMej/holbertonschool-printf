@@ -40,7 +40,21 @@ int print_string(va_list args);
 /* a function to print a number with a va_list */
 int print_number(va_list args);
 
-int print_binary (va_list args);
-unsigned int print_binary_helper (unsigned int number, int * lenght);
+/* a function to print an unsigned int with a va_list */
+int print_unsigned_int(va_list args);
 
+/* a function to print a binary with va_list */
+int print_binary(va_list args);
+
+/* a function to print an octale with va_list */
+int print_octale(va_list args);
+
+/* a function to print an hexadecimal uppercase with va_list */
+int print_hexa_upper(va_list args);
+
+/* a function to print an hexadecimal lowercase with va_list */
+int print_hexa_lower(va_list args);
+
+/* a function to print a custom specifier %S with va_list */
+int custom_print_string(va_list args);
 #endif

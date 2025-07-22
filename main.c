@@ -48,11 +48,12 @@ int main(void)
 	printf(NULL);
 	_printf("%d\n", INT_MIN);
 	printf("%d\n", INT_MIN);
-    len =_printf("Binary : %b\n", 100000);
-    len2 =printf("Binary : %b\n", 100000);
+    len =_printf("Binary : %b\n", 0);
+    len2 =printf("Binary : %b\n", 0);
     _printf("Binary : %b\n", UINT_MAX);
     printf("Binary : %b\n", UINT_MAX);
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+    _printf("%S\n", "Best\nSchool");
     return (0);
 }

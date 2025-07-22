@@ -2,48 +2,42 @@
 #include <stdarg.h>
 
 /**
- * print_binary - function to convert to binary
+ * print_unsigned_int - function to print
+ * an unsigned int
  *
- * @args: it's a va_list
+ * @args: va_list
  *
- * Return: length of string
+ * Return: lenght of the print
  */
-
-int print_binary(va_list args)
+int print_unsigned_int(va_list args)
 {
-	unsigned int number = 0;
-	int lenght = 0;
 
-	number = va_arg(args, unsigned int);
+	int number = va_arg(args, int);
+	int digits[10]; /* max integer can only hold 10 digit */
+	unsigned int index = 0, num = 0;
+	int i, length = 0;
 
-	if (number == 0)
+	num = number;
+
+	/* printing zero and leaving if zero is given */
+	if (num == 0)
 	{
 		_putchar('0');
 		return (1);
 	}
 
-	print_binary_helper(number, &lenght);
+	/* adding last digits to digits array */
+	do {
+		digits[index] = num % 10;
+		num /= 10;
+		index++;
+	} while (num > 0);
 
-	return (lenght);
-
-}
-/**
- * print_binary_helper - function to print binary
- *
- * @number: the number
- * @lenght: size of binary
- *
- * Return: lenght of the print
- */
-unsigned int print_binary_helper(unsigned int number, int *lenght)
-{
-	if (number == 0)
+	/* printing number starting from the first digits (index - 1) */
+	for (i = index - 1; i >= 0; i--)
 	{
-		return (0);
+		_putchar(digits[i] + '0');
+		length++;
 	}
-	print_binary_helper(number / 2, lenght);
-	_putchar((number % 2) + '0');
-	*lenght += 1;
-
-	return (number);
+	return (length);
 }

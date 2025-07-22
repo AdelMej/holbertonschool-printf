@@ -19,6 +19,11 @@ print_func_t get_print_function(char c)
 		{'d', print_number},
 		{'i', print_number},
 		{'b', print_binary},
+		{'u', print_unsigned_int},
+		{'o', print_octale},
+		{'x', print_hexa_lower},
+		{'X', print_hexa_upper},
+		{'S', custom_print_string},
 		{'\0', NULL}
 	};
 
