@@ -1,4 +1,7 @@
-.TH _PRINTF 3
+.\" Man page for _printf function
+.\" Author: Adel Mejrissi, Jeremy Laurens
+.\" Last updated: July 22, 2025
+.TH _PRINTF 3 "july 22, 2025" "1.0" 
 .SH NAME
 _printf \- function that mimics the standard printf in C
 .SH SYNOPSIS
@@ -19,6 +22,9 @@ Prints a string.
 .TP
 .B %d, %i
 Prints a signed decimal integer.
+.TP
+.B %%
+Prints a %
 .SH RETURN VALUE
 Returns the number of characters printed (excluding the null byte used to end output to strings).
 .SH EXAMPLES
