@@ -1,0 +1,26 @@
+NAME
+    _printf prints a given string and argument specifiers
+SYNOPSIS
+    _printf(STRING)
+DESCRIPTION
+	a funtion that prints a string typically used in c for printing strings but can handle specifiers
+	in the form of %c, %d, %u... those specifiers means that it's expecting a type in argument linked
+	to that specifier
+EXAMPLES
+
+	_printf("foo") should print foo in the standard output
+
+	_printf("my age is %d years old", 20) should print my age is 20 years old in the standard output
+
+	_printf("my name is %s", "toto") should print my name is toto
+
+	_printf("that's a character : %c", 'c') should printf that's a character : c
+
+SEE ALSO
+	write, putchar, printf
+BUGS
+    Doesn't handle finishing % properly it leads to undefined behavior
+AUTHOR
+	Adel Mejrissi, Jeremy 
+COPYRIGHT
+	No copyright it's free to use
