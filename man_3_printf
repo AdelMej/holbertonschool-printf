@@ -1,7 +1,4 @@
-.\" Man page for _printf function
-.\" Author: Adel Mejrissi, Jeremy Laurens
-.\" Last updated: July 22, 2025
-.TH _PRINTF 3 "july 22, 2025" "1.0" 
+.TH _PRINTF 3 "july 22, 2025" "Version 1.0" 
 .SH NAME
 _printf \- function that mimics the standard printf in C
 .SH SYNOPSIS
