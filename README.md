@@ -9,7 +9,7 @@ The principal usecase of printf is to print a string.
 
 ## Flow chart
 
-```Mermaid
+```mermaid
 ---
 config:
   layout: dagre
@@ -29,7 +29,6 @@ flowchart TD
     J -- no --> P["print the specifier"]
     P --> O["skip next character"]
     K --> O
-```
 ```
 ## Feature
 ### Typical usecase : 
