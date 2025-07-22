@@ -20,7 +20,7 @@ int custom_print_string(va_list args)
 
 	for (i = 0; to_print[i] != '\0'; i++)
 	{
-		if (to_print[i] > 32 && to_print[i] <= 127)
+		if (to_print[i] > 32 && to_print[i] < 127)
 		{
 			_putchar(to_print[i]);
 			lenght++;
