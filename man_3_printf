@@ -1,26 +1,31 @@
-NAME
-    _printf prints a given string and argument specifiers
-SYNOPSIS
-    _printf(STRING)
-DESCRIPTION
-	a funtion that prints a string typically used in c for printing strings but can handle specifiers
-	in the form of %c, %d, %u... those specifiers means that it's expecting a type in argument linked
-	to that specifier
-EXAMPLES
-
-	_printf("foo") should print foo in the standard output
-
-	_printf("my age is %d years old", 20) should print my age is 20 years old in the standard output
-
-	_printf("my name is %s", "toto") should print my name is toto
-
-	_printf("that's a character : %c", 'c') should printf that's a character : c
-
-SEE ALSO
-	write, putchar, printf
-BUGS
-    Doesn't handle finishing % properly it leads to undefined behavior
-AUTHOR
-	Adel Mejrissi, Jeremy 
-COPYRIGHT
-	No copyright it's free to use
+.TH _PRINTF 3
+.SH NAME
+_printf \- function that mimics the standard printf in C
+.SH SYNOPSIS
+.B _printf
+.RI "(const char *format, ...)"
+.SH DESCRIPTION
+.B _printf
+is a custom implementation of the standard C
+.BR printf (3)
+function. It produces output based on a format string that can include format specifiers.
+.SH FORMAT SPECIFIERS
+.TP
+.B %c
+Prints a single character.
+.TP
+.B %s
+Prints a string.
+.TP
+.B %d, %i
+Prints a signed decimal integer.
+.SH RETURN VALUE
+Returns the number of characters printed (excluding the null byte used to end output to strings).
+.SH EXAMPLES
+The following prints "Hello, world! 42":
+.PP
+_printf("Hello, %s! %d\\n", "world", 42);
+.SH AUTHORS
+Adel Mejrissi, Jeremy Laurens
+.SH BUGS
+Currently does not support all standard printf specifiers such as %f or %u.
