@@ -3,69 +3,107 @@
 #include <stdlib.h>
 
 /* Function declarations */
-void print_pointer_helper(unsigned long address, int *length);
-int print_nil(void);
+char *pointer_helper(unsigned long address, char *str);
+void nil_string(char *str);
 
 /**
- * print_pointer - Prints a pointer address in hexadecimal format.
- * @args: va_list containing the pointer to print.
+ * pointer_to_string - converts a pointer argument to its string representation
+ * @args: va_list containing the pointer to convert
  *
- * Return: Number of characters printed.
+ * This function retrieves a void pointer from the variable argument list,
+ * then converts its address to a string in hexadecimal
+ * format prefixed with "0x".
+ * If the pointer is NULL, it returns a string "(nil)".
+ * If the pointer's address is zero, it returns "0x".
+ *
+ * Return: pointer to the newly allocated string representing the pointer,
+ *         or NULL if memory allocation fails
  */
-int print_pointer(va_list args)
+char *pointer_to_string(va_list args)
 {
 	void *ptr = va_arg(args, void *);
-	int length = 2;
+	unsigned long address, temp;
+	char *str, *strptr;
+	unsigned int size;
 
+	address = (unsigned long)ptr;
 	if (ptr == NULL)
-		return (print_nil());
+	{
+		str = malloc(6);
+		if (str == NULL)
+			return (NULL);
+		nil_string(str);
+		return (str);
+	}
 
-	_putchar('0');
-	_putchar('x');
+	if (address == 0)
+	{
+		str = malloc(3);
+		if (str == NULL)
+			return (NULL);
+		str[0] = '0';
+		str[1] = 'x';
+		str[2] = '\0';
+		return (str);
+	}
 
-	print_pointer_helper((unsigned long)ptr, &length);
+	size = 2;
+	temp = address;
+	while (temp > 0)
+	{
+		temp /= 16;
+		size++;
+	}
+	str = malloc(size + 1);
+	if (str == NULL)
+		return (NULL);
 
-	return (length);
+	str[0] = '0';
+	str[1] = 'x';
+	strptr = pointer_helper(address, str + 2);
+	*strptr = '\0';
+
+	return (str);
 }
 
 /**
- * print_pointer_helper - Recursively prints an unsigned long integer
- *                       as a lowercase hexadecimal number.
- * @address: The unsigned long integer to print.
- * @length: The length of the print
+ * pointer_helper - recursively converts an unsigned long to a hex string
+ * @address: the unsigned long integer to convert
+ * @str: pointer to the buffer where the hex digits will be written
  *
- * Description:
- * Recursively divides the address by 16 and prints the hexadecimal
- * digits corresponding to the remainder.
- * Does not print the "0x" prefix.
+ * This function recursively converts the given address to its
+ * hexadecimal representation and stores it in the buffer pointed to
+ * by str. It writes digits starting from the most significant hex digit.
+ *
+ * Return: pointer to the position in the buffer after the last written digit
  */
-void print_pointer_helper(unsigned long address, int *length)
+char *pointer_helper(unsigned long address, char *str)
 {
 	static const char *tab_hexa = "0123456789abcdef";
 
 	if (address == 0)
-		return;
+		return (str);
 
-	print_pointer_helper(address / 16, length);
-	_putchar(tab_hexa[address % 16]);
-	(*length)++;
+	str = pointer_helper(address / 16, str);
+	*str = tab_hexa[address % 16];
+	return (str + 1);
 }
 
 /**
- * print_nil - Prints the string "(nil)".
+ * nil_string - copies the string "(nil)" into the given buffer
+ * @str: pointer to the buffer where the string will be copied
  *
- * Return: The number of characters printed (always 5).
- *
- * Description:
- * Used to handle printing of NULL pointers in a human-readable format,
- * following the standard `(nil)` representation.
+ * This function copies the literal string "(nil)" including the
+ * terminating null byte into the memory pointed to by @str.
+ * The buffer must be large enough to hold at least 6 bytes.
  */
-int print_nil(void)
+void nil_string(char *str)
 {
-	_putchar('(');
-	_putchar('n');
-	_putchar('i');
-	_putchar('l');
-	_putchar(')');
-	return (5);
+	char *nil = "(nil)";
+	unsigned int i;
+
+	for (i = 0; nil[i] != '\0'; i++)
+		str[i] = nil[i];
+
+	str[i] = '\0';
 }

@@ -1,97 +1,148 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 /* Function declarations */
-void print_hexa_upper_helper(unsigned int number, int *length);
-void print_hexa_lower_helper(unsigned int number, int *length);
+char *hexa_upper_helper(unsigned int number, char *str);
+char *hexa_lower_helper(unsigned int number, char *str);
 
 /**
- * print_hexa_upper - Prints an unsigned int in uppercase hexadecimal.
- * @args: A va_list containing the unsigned int to print.
+ * hexa_upper_to_string - Converts an unsigned int to an uppercase
+ * hexadecimal string.
+ * @args: A va_list containing the unsigned int to convert.
  *
- * Return: The number of characters printed.
+ * Return: Pointer to a newly allocated string representing the hexadecimal
+ *         form of the number in uppercase, or NULL if allocation fails.
+ *
+ * Description: Returns "0" if the number is 0.
+ *              Caller is responsible for freeing the returned string.
  */
-int print_hexa_upper(va_list args)
+char *hexa_upper_to_string(va_list args)
 {
 	unsigned int number;
-	int length = 0;
+	unsigned int size = 0, temp;
+	char *str, *ptr;
 
 	number = va_arg(args, unsigned int);
 
 	if (number == 0)
 	{
-		_putchar('0');
-		return (1);
+		str = malloc(2);
+		if (str == NULL)
+			return (NULL);
+
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
 	}
 
-	print_hexa_upper_helper(number, &length);
+	temp = number;
+	while (temp > 0)
+	{
+		temp /= 16;
+		size++;
+	}
+	str = malloc(size + 1);
+	if (str == NULL)
+		return (NULL);
 
-	return (length);
+	ptr = hexa_upper_helper(number, str);
+	*ptr = '\0';
+
+	return (str);
 }
 
 
 /**
- * print_hexa_upper_helper - Recursively prints an unsigned int
- * as uppercase hex.
- * @number: The number to print.
- * @length: Pointer to an int tracking the number of printed characters.
+ * hexa_upper_helper - Recursively fills buffer with hexadecimal digits.
+ * @number: The number to convert.
+ * @str: The buffer to write characters into.
  *
- * Return: void.
+ * Return: Pointer to the next available character in the buffer.
+ *
+ * Description: Uses recursion to ensure the digits are written in the
+ *              correct order. Assumes buffer is pre-allocated
+ *              and large enough.
  */
-void print_hexa_upper_helper(unsigned int number, int *length)
+char *hexa_upper_helper(unsigned int number, char *str)
 {
 	char *hexa_value = "0123456789ABCDEF";
 
 	if (number == 0)
-		return;
+		return (str);
 
-	print_hexa_upper_helper(number / 16, length);
-	_putchar(hexa_value[number % 16]);
-	(*length)++;
+	str = hexa_upper_helper(number / 16, str);
+	*str = hexa_value[number % 16];
+	return (str + 1);
 }
 
 
 /**
- * print_hexa_lower - Prints an unsigned int in
- * lowercase hexadecimal.
- * @args: A va_list containing the unsigned int to print.
+ * hexa_lower_to_string - Converts an unsigned int to a lowercase
+ * hexadecimal string.
+ * @args: A va_list containing the unsigned int to convert.
  *
- * Return: The number of characters printed.
+ * Return: Pointer to a newly allocated string representing the hexadecimal
+ *         form of the number in lowecase, or NULL if allocation fails.
+ *
+ * Description: Returns "0" if the number is 0.
+ *              Caller is responsible for freeing the returned string.
  */
-int print_hexa_lower(va_list args)
+char *hexa_lower_to_string(va_list args)
 {
 	unsigned int number;
-	int length = 0;
+	unsigned int size = 0, temp;
+	char *str, *ptr;
 
 	number = va_arg(args, unsigned int);
 
 	if (number == 0)
 	{
-		_putchar('0');
-		return (1);
+		str = malloc(2);
+		if (str == NULL)
+			return (NULL);
+
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
 	}
 
-	print_hexa_lower_helper(number, &length);
+	temp = number;
+	while (temp > 0)
+	{
+		temp /= 16;
+		size++;
+	}
+	str = malloc(size + 1);
+	if (str == NULL)
+		return (NULL);
 
-	return (length);
+	ptr = hexa_lower_helper(number, str);
+	*ptr = '\0';
 
+	return (str);
 }
 
 
 /**
- * print_hexa_lower_helper - Recursively prints an unsigned int
- * as lowercase hex.
- * @number: The number to print.
- * @length: Pointer to an int tracking the number of printed characters.
+ * hexa_lower_helper - Recursively fills buffer
+ * with lowercase hexadecimal digits.
+ * @number: The number to convert.
+ * @str: The buffer to write characters into.
  *
- * Return: void.
+ * Return: Pointer to the next available character in the buffer.
+ *
+ * Description: Uses recursion to ensure the digits are written in the
+ *              correct order. Assumes buffer is pre-allocated
+ *              and large enough.
  */
-void print_hexa_lower_helper(unsigned int number, int *length)
+char *hexa_lower_helper(unsigned int number, char *str)
 {
 	char *hexa_value = "0123456789abcdef";
 
 	if (number == 0)
-		return;
-	print_hexa_lower_helper(number / 16, length);
-	_putchar(hexa_value[number % 16]);
-	(*length)++;
+		return (str);
+
+	str = hexa_lower_helper(number / 16, str);
+	*str = hexa_value[number % 16];
+	return (str + 1);
 }

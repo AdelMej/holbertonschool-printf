@@ -2,19 +2,27 @@
 #include <stdarg.h>
 #include <stdlib.h>
 /* Function declarations */
-void custom_print_hex_helper(unsigned char str);
+char *custom_hex_helper(unsigned char str);
 
 /**
- * custom_print_string - Prints a string with non-printables as \xNN.
- * @args: va_list containing the string to print.
+ * custom_string_cpy - Copies a string and replaces non-printable characters
+ *                     with their hexadecimal codes prefixed by \x
+ * @args: va_list containing the string to copy and format
  *
- * Return: Number of characters printed.
+ * This function takes a string from the argument list, duplicates it into
+ * a newly allocated buffer, and replaces non-printable ASCII characters
+ * (values < 32 or >= 127) with a four-character escape sequence of the form
+ * "\xHH", where "HH" is the uppercase hexadecimal value of the character.
+ *
+ * Return: Pointer to a newly allocated string with non-printable characters
+ *         escaped, or NULL if memory allocation fails
  */
-int custom_print_string(va_list args)
+char *custom_string_cpy(va_list args)
 {
-	unsigned int i;
-	int length = 0;
+	unsigned int i = 0, j = 0;
+	int size = 0;
 	char *to_print;
+	char *strcpy, *temp;
 
 	to_print = va_arg(args, char *);
 	if (to_print == NULL)
@@ -24,41 +32,70 @@ int custom_print_string(va_list args)
 	{
 		if (to_print[i] >= 32 && to_print[i] < 127)
 		{
-			_putchar(to_print[i]);
-			length++;
+			size++;
 		}
 		else
 		{
-			_putchar('\\');
-			_putchar('x');
-			custom_print_hex_helper((unsigned char)to_print[i]);
-			length += 4;
+			size += 4;
 		}
 	}
-	return (length);
+
+	strcpy = malloc(size + 1);
+	if (strcpy == NULL)
+		return (NULL);
+
+	for (i = 0; to_print[i] != '\0'; i++)
+	{
+		if (to_print[i] >= 32 && to_print[i] < 127)
+		{
+			strcpy[j++] = to_print[i];
+		}
+		else
+		{
+			temp = custom_hex_helper((unsigned char)to_print[i]);
+			if (temp == NULL)
+				return (NULL);
+
+			strcpy[j++] = '\\';
+			strcpy[j++] = 'x';
+			strcpy[j++] = temp[0];
+			strcpy[j++] = temp[1];
+			free(temp);
+		}
+	}
+
+	strcpy[j] = '\0';
+	return (strcpy);
 }
 
 /**
- * custom_print_hex_helper - Prints a byte as two hexadecimal characters.
- * @str: The unsigned char byte to print.
+ * custom_hex_helper - Converts a byte to a 2-digit
+ * uppercase hexadecimal string
+ * @str: The byte (unsigned char) to convert
  *
- * This function takes a pointer to a byte, extracts its high and low nibbles,
- * converts each nibble to its hexadecimal character, and prints them using
- * _putchar.
+ * This function takes a single byte and returns a newly allocated string
+ * containing its hexadecimal representation in uppercase. The returned
+ * string is always 2 characters long, plus a null terminator.
  *
- * The high nibble is obtained by shifting the byte 4 bits to the right.
- * The low nibble is obtained by masking the byte with 0x0F.
+ * Example: input 10 returns "0A", input 255 returns "FF".
  *
- * Example:
- * If str is 0xAB, the function will print "AB".
+ * Return: A pointer to a 3-character null-terminated string,
+ *         or NULL if memory allocation fails
  */
-void custom_print_hex_helper(unsigned char str)
+char *custom_hex_helper(unsigned char str)
 {
 	const char *hex_digits = "0123456789ABCDEF";
-
+	char *result;
 	int high = str >> 4; /* getting high nibble */
 	int low = str & 0x0F; /* getting low nibble */
 
-	_putchar(hex_digits[high]); /* printing high nibble */
-	_putchar(hex_digits[low]); /* printing low nibble */
+	result = malloc(3);
+	if (result == NULL)
+		return (NULL);
+
+	result[0] = hex_digits[high]; /* printing high nibble */
+	result[1] = hex_digits[low]; /* printing low nibble */
+	result[2] = '\0';
+
+	return (result);
 }

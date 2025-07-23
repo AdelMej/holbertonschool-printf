@@ -14,17 +14,17 @@ print_func_t get_print_function(char c)
 	unsigned int i;
 
 	handler_t table_print[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'d', print_number},
-		{'i', print_number},
-		{'b', print_binary},
-		{'u', print_unsigned_int},
-		{'o', print_octal},
-		{'x', print_hexa_lower},
-		{'X', print_hexa_upper},
-		{'S', custom_print_string},
-		{'p', print_pointer},
+		{'c', char_to_string},
+		{'d', int_to_string},
+		{'i', int_to_string},
+		{'s', string_cpy},
+		{'b', binary_to_string},
+		{'u', uint_to_string},
+		{'x', hexa_lower_to_string},
+		{'X', hexa_upper_to_string},
+		{'o', octal_to_string},
+		{'S', custom_string_cpy},
+		{'p', pointer_to_string},
 		{'\0', NULL}
 	};
 

@@ -1,49 +1,74 @@
 #include "main.h"
+#include <stdlib.h>
 #include <stdarg.h>
 /*function delaration */
-void print_binary_helper(unsigned int number, int *length);
-
+char *binary_helper(unsigned int number, char *str);
 
 /**
- * print_binary - function to convert to binary
+ * binary_to_string - Converts an unsigned int to a binary string.
+ * @args: A va_list containing the unsigned int to convert.
  *
- * @args: it's a va_list
+ * Return: Pointer to a newly allocated string representing the binary
+ *         form of the number, or NULL if memory allocation fails.
  *
- * Return: length of string
+ * Description: If the number is zero, returns a string "0".
+ *              Otherwise, calculates the required string size,
+ *              allocates memory, and fills it with the binary digits.
+ *              The caller is responsible for freeing the returned string.
  */
-
-int print_binary(va_list args)
+char *binary_to_string(va_list args)
 {
-	unsigned int number = 0;
-	int length = 0;
+	unsigned int number = 0, temp, size = 0;
+	char *str, *ptr;
 
 	number = va_arg(args, unsigned int);
 
 	if (number == 0)
 	{
-		_putchar('0');
-		return (1);
+		str = malloc(2);
+		if (str == NULL)
+			return (NULL);
+
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
 	}
 
-	print_binary_helper(number, &length);
+	temp = number;
+	while (temp > 0)
+	{
+		temp /= 2;
+		size++;
+	}
 
-	return (length);
+	str = malloc(size + 1);
+	if (str == NULL)
+		return (NULL);
 
+	ptr = binary_helper(number, str);
+	*ptr = '\0';
+
+	return (str);
 }
+
 /**
- * print_binary_helper - function to print binary
+ * binary_helper - Recursively converts an unsigned integer to binary string.
+ * @number: The unsigned integer to convert.
+ * @str: Pointer to the current position in the output string buffer.
  *
- * @number: the number
- * @length: size of binary
+ * Return: void
  *
- * Return: length of the print
+ * Note: This function appends the binary digits to `str`
+ * as characters ('0' or '1'),
+ * increments the length accordingly, and assumes `str` has enough space.
+ * The pointer `str` is incremented as the recursion unwinds to fill digits.
  */
-void print_binary_helper(unsigned int number, int *length)
+char *binary_helper(unsigned int number, char *str)
 {
 	if (number == 0)
-		return;
+		return (str);
 
-	print_binary_helper(number / 2, length);
-	_putchar((number % 2) + '0');
-	(*length)++;
+	str = binary_helper(number / 2, str);
+	*str = (number % 2) + '0';
+	return (str + 1);
 }

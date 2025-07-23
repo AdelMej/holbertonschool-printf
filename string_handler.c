@@ -1,26 +1,33 @@
 #include "main.h"
+#include "_string.h"
 #include <stdlib.h>
 
 /**
- * print_string - Prints a string.
- * @args: A va_list containing the string to print.
+ * string_cpy - Copies a string from a va_list to a newly allocated string.
+ * @args: A va_list containing the string to copy.
  *
- * Return: The number of characters printed.
+ * Return: Pointer to a newly allocated string copy,
+ *         or NULL if memory allocation fails.
+ *
+ * Note: If the input string is NULL, "(null)" is copied instead.
+ *       The caller is responsible for freeing the returned string.
  */
-int print_string(va_list args)
+char *string_cpy(va_list args)
 {
-	unsigned int index;
 	char *str = va_arg(args, char *);
-	int length = 0;
+	char *cpy;
+	unsigned int i, size;
 
 	if (str == NULL)
 		str = "(null)";
 
-	for (index = 0; str[index] != '\0'; index++)
-	{
-		_putchar(str[index]);
-		length++;
-	}
+	size = _strlen(str + 1);
+	cpy = malloc(size);
+	if (cpy == NULL)
+		return (NULL);
 
-	return (length);
+	for (i = 0; i <= size; i++)
+		cpy[i] = str[i];
+
+	return (cpy);
 }
