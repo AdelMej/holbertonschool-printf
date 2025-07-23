@@ -1,5 +1,4 @@
-#include "_string.h"
-
+#include "main.h"
 /**
  * _strlen - calculates the length of a null-terminated string.
  * @str: pointer to the string.

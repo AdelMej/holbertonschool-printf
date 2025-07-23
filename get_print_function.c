@@ -9,11 +9,11 @@
 * Return: the function pointer on success
 * NULL on fail
 */
-print_func_t get_print_function(char c)
+print_func_t get_print_function(char specifier)
 {
 	unsigned int i;
 
-	handler_t table_print[] = {
+	factory_t factory[] = {
 		{'c', char_to_string},
 		{'d', int_to_string},
 		{'i', int_to_string},
@@ -28,9 +28,9 @@ print_func_t get_print_function(char c)
 		{'\0', NULL}
 	};
 
-	for (i = 0; table_print[i].specifier != '\0'; i++)
-		if (table_print[i].specifier == c)
-			return (table_print[i].print);
+	for (i = 0; factory[i].specifier != '\0'; i++)
+		if (factory[i].specifier == specifier)
+			return (factory[i].print);
 
 	return (NULL);
 }

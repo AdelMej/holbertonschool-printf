@@ -1,6 +1,7 @@
-#ifndef PRINTF_MAIN_H
-#define PRINTF_MAIN_H
+#ifndef MY_PRINTF_MAIN_H
+#define MY_PRINTF_MAIN_H
 #include <stdarg.h>
+#include <stddef.h>
 
 /* Flag constants for format_specifier.flags bitmask */
 #define FLAG_MINUS  (1 << 0) /* '-' flag: left-justify */
@@ -10,13 +11,15 @@
 #define FLAG_HASH   (1 << 4) /* '#' flag: alternate form */
 
 /**
-* struct print_handler - a structure to handle printing
-* depending on a specifier
-* @specifier: a character defining the function to use
-* @print: a function pointer to a function that handles printing
-* the associated format
-*/
-struct print_handler
+ * struct format_factory - Associates format specifiers with handler functions
+ * @specifier: The format specifier character (e.g., 'd', 's', 'c')
+ * @print: Pointer to the function that handles printing for this specifier
+ *
+ * Description: This structure is used to map a format specifier character
+ * to its corresponding printing function. It is used in the custom _printf
+ * implementation to dispatch the correct function based on the specifier.
+ */
+struct format_factory
 {
 	char specifier;
 	char *(*print)(va_list);
@@ -34,57 +37,43 @@ struct print_handler
 struct format_specifier
 {
 	int flags; /* bitmask for flags like '-', '+', '0', ' ', '#' */
+	int width;
+	char length[3];
+	int precision;
+	char specifier;
 };
 
-typedef struct print_handler handler_t;
-typedef struct format_specifier format_s_t;
-
-/* defining a print_func_t for readability */
+/* --- typedefs --- */
+typedef struct format_factory factory_t;
+typedef struct format_specifier format_specifier_t;
 typedef char *(*print_func_t)(va_list);
 
-/* function for getting a function pointer */
-print_func_t get_print_function(char c);
-
-/* a function to handle different format */
-char *format_handler(char specifier, va_list args);
-
-/* a function that mimic the behavior of printf */
+/* --- Core printf interface --- */
 int _printf(const char *format, ...);
-
-/* a function to print a character */
 int _putchar(char c);
-
-/* a function to print a char with a va_list */
-char *char_to_string(va_list args);
-
-/* a function to print a string with a va_list */
-char *string_cpy(va_list args);
-
-/* a function to print a number with a va_list */
-char *int_to_string(va_list args);
-
-/* a function to print an unsigned int with a va_list */
-char *uint_to_string(va_list args);
-
-/* a function to print a binary with va_list */
-char *binary_to_string(va_list args);
-
-/* a function to print an octale with va_list */
-char *octal_to_string(va_list args);
-
-/* a function to print an hexadecimal uppercase with va_list */
-char *hexa_upper_to_string(va_list args);
-
-/* a function to print an hexadecimal lowercase with va_list */
-char *hexa_lower_to_string(va_list args);
-
-/* a function to print a custom specifier %S with va_list */
-char *custom_string_cpy(va_list args);
-
-/* a function to print a pointer in hexadecimal */
-char *pointer_to_string(va_list args);
-
-/* a function to print remaining buffered character */
 void _putchar_flush(void);
+
+/* --- Format handler helpers --- */
+print_func_t get_print_function(char c);
+char *format_handler(char specifier, va_list args);
+const char *flag_handler(const char *format_ptr, format_specifier_t *info);
+void init_format_info(format_specifier_t *info);
+const char *width_handler(const char *str, format_specifier_t *format, va_list *args);
+
+/* --- Printing functions --- */
+/* Characters and strings */
+char *char_to_string(va_list args);
+char *string_cpy(va_list args);
+char *custom_string_cpy(va_list args);
+unsigned int _strlen(char *str);
+
+/* Numbers */
+char *int_to_string(va_list args);
+char *uint_to_string(va_list args);
+char *binary_to_string(va_list args);
+char *octal_to_string(va_list args);
+char *hexa_upper_to_string(va_list args);
+char *hexa_lower_to_string(va_list args);
+char *pointer_to_string(va_list args);
 
 #endif
