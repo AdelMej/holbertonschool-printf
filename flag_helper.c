@@ -85,6 +85,10 @@ char *apply_minus(format_specifier_t *fmt, char *str)
 	unsigned int padding = 0, i, j;
 	char *new_str;
 
+	if (str == NULL)
+		return (NULL);
+
+	size = _strlen(str);
 	if (fmt->flags & FLAG_MINUS && !(fmt->flags & FLAG_ZERO))
 	{
 		if (fmt->width > size)
