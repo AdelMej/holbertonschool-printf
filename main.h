@@ -128,4 +128,17 @@ unsigned int _sizeofulong(unsigned long number);
 unsigned int _sizeofushort(unsigned short number);
 unsigned int _sizeofuchar(unsigned char number);
 
+/* --- final processing line --- */
+char *apply_precision(format_specifier_t *fmt, char *str);
+char *string_precision_handler(format_specifier_t *fmt, char *str);
+char *int_precision_handler(format_specifier_t *fmt, char *str);
+char *apply_all(format_specifier_t *fmt, char *str);
+
+/* --- flags helpers --- */
+char *apply_zero(format_specifier_t *fmt, char *str);
+char *apply_minus(format_specifier_t *fmt, char *str);
+char *apply_plus(format_specifier_t *fmt, char *str);
+char *apply_space(format_specifier_t *fmt, char *str);
+char *apply_hash(format_specifier_t *fmt, char *str);
+
 #endif /* MY_PRINTF_MAIN_H */

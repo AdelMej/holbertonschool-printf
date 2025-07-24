@@ -34,6 +34,8 @@ const char *width_handler(const char *str, format_specifier_t *format, va_list *
 	if (*str == '.') /* Precision specified */
 	{
 		str++; /* Skip '.' */
+
+		format->precision = 0;
 		if (*str == '*') /* Precision specified by argument */
 		{
 			format->precision = va_arg(*args, int);

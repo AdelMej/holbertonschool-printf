@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * string_cpy - Copies a string from a va_list to a newly allocated string.
@@ -22,8 +23,8 @@ char *string_cpy(format_specifier_t *format_specifier, va_list args)
 	if (str == NULL)
 		str = "(null)";
 
-	size = _strlen(str + 1);
-	cpy = malloc(size);
+	size = _strlen(str);
+	cpy = malloc(size + 1);
 	if (cpy == NULL)
 		return (NULL);
 

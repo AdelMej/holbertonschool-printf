@@ -50,6 +50,7 @@ int _printf(const char *format, ...)
 			ptr = length_handler(ptr, &specifiers_format);
 			specifiers_format.specifier = *ptr;
 			res = format_handler(&specifiers_format, args);
+			res = apply_all(&specifiers_format, res);
 			if (res == NULL)
 			{
 				va_end(args);
