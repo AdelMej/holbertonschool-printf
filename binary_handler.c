@@ -1,74 +1,40 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdarg.h>
-/*function delaration */
-char *binary_helper(unsigned int number, char *str);
 
 /**
- * binary_to_string - Converts an unsigned int to a binary string.
- * @args: A va_list containing the unsigned int to convert.
+ * binary_to_string_handler - Dispatches binary conversion based on length.
+ * @format_specifier: Pointer to the format_specifier_t struct containing
+ *                    formatting info including length modifiers.
+ * @args: va_list containing the value to convert to binary.
  *
- * Return: Pointer to a newly allocated string representing the binary
- *         form of the number, or NULL if memory allocation fails.
+ * This function checks the length modifier in the format specifier
+ * and calls the appropriate binary conversion function:
+ * - No modifier: uses binary_to_string_default
+ * - 'l': uses binary_to_string_l
+ * - 'll': uses binary_to_string_ll
+ * - 'h': uses binary_to_string_h
+ * - 'hh': uses binary_to_string_hh
  *
- * Description: If the number is zero, returns a string "0".
- *              Otherwise, calculates the required string size,
- *              allocates memory, and fills it with the binary digits.
- *              The caller is responsible for freeing the returned string.
+ * Return: Pointer to a dynamically allocated string containing the binary
+ *         representation of the number, or NULL on failure.
  */
-char *binary_to_string(va_list args)
+char *binary_to_string_handler(format_specifier_t *format_specifier, va_list args)
 {
-	unsigned int number = 0, temp, size = 0;
-	char *str, *ptr;
-
-	number = va_arg(args, unsigned int);
-
-	if (number == 0)
+	if (format_specifier->length[0] == '\0')
 	{
-		str = malloc(2);
-		if (str == NULL)
-			return (NULL);
-
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
+		return (binary_to_string_default(args));
+	}
+	else if (format_specifier->length[0] == 'l')
+	{
+		return (binary_to_string_l(args));
+	}
+	else if (format_specifier->length[0] == 'h')
+	{
+		if (format_specifier->length[1] == 'h')
+			return (binary_to_string_hh(args));
+		return (binary_to_string_h(args));
 	}
 
-	temp = number;
-	while (temp > 0)
-	{
-		temp /= 2;
-		size++;
-	}
-
-	str = malloc(size + 1);
-	if (str == NULL)
-		return (NULL);
-
-	ptr = binary_helper(number, str);
-	*ptr = '\0';
-
-	return (str);
-}
-
-/**
- * binary_helper - Recursively converts an unsigned integer to binary string.
- * @number: The unsigned integer to convert.
- * @str: Pointer to the current position in the output string buffer.
- *
- * Return: void
- *
- * Note: This function appends the binary digits to `str`
- * as characters ('0' or '1'),
- * increments the length accordingly, and assumes `str` has enough space.
- * The pointer `str` is incremented as the recursion unwinds to fill digits.
- */
-char *binary_helper(unsigned int number, char *str)
-{
-	if (number == 0)
-		return (str);
-
-	str = binary_helper(number / 2, str);
-	*str = (number % 2) + '0';
-	return (str + 1);
+	return (binary_to_string_default(args));
 }

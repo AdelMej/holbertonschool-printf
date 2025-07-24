@@ -43,9 +43,13 @@ int _printf(const char *format, ...)
 				va_end(args);
 				return (-1); /* error incorrect parsing */
 			}
-			ptr = flag_handler((char *)ptr, &specifiers_format);
+			init_format_info(&specifiers_format);
 
-			res = format_handler(*ptr, args);
+			ptr = flag_handler(ptr, &specifiers_format);
+			ptr = width_handler(ptr, &specifiers_format, &args);
+			ptr = length_handler(ptr, &specifiers_format);
+			specifiers_format.specifier = *ptr;
+			res = format_handler(&specifiers_format, args);
 			if (res == NULL)
 			{
 				va_end(args);
@@ -71,19 +75,26 @@ int _printf(const char *format, ...)
 
 /**
  * format_handler - Selects the appropriate print function for a specifier.
- * @specifier: The format specifier character.
- * @args: A va_list containing the arguments to format.
+ * @specifiers_format: Pointer to the format_specifier_t struct containing
+ *                    the parsed format specifier and modifiers.
+ * @args:             A va_list of the arguments to format.
  *
- * Return: Pointer to a newly allocated string representing
- * the formatted output, or NULL if memory allocation fails
- * or an error occurs.
+ * Return: Pointer to a newly allocated string containing the formatted output,
+ *         or NULL if memory allocation fails or an error occurs.
+ *
+ * Description: Checks the specifier in specifiers_format. If it is '%',
+ *              returns a string with a single '%'. If the specifier is
+ *              unknown, returns a string with '%' followed by that unknown
+ *              specifier. Otherwise, calls the matching print function
+ *              with the given arguments and returns its output.
  */
-char *format_handler(char specifier, va_list args)
+char *format_handler(format_specifier_t *specifiers_format, va_list args)
 {
 	print_func_t function;
+	char specifier = specifiers_format->specifier;
 	char *str;
 
-	if (specifier == '%') /* printing literal '%' */
+	if (specifiers_format->specifier == '%') /* printing literal '%' */
 	{
 		str = malloc(2);
 		if (str == NULL)
@@ -95,7 +106,7 @@ char *format_handler(char specifier, va_list args)
 	}
 
 	/* getting the correct function for the specifier */
-	function = get_print_function(specifier);
+	function = get_print_function(specifiers_format->specifier);
 	if (function == NULL) /* skipping unknown specifier */
 	{
 		str = malloc(3);
@@ -108,7 +119,7 @@ char *format_handler(char specifier, va_list args)
 		return (str);
 	}
 
-	return (function(args));
+	return (function(specifiers_format, args));
 }
 
 

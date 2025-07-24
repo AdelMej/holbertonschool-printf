@@ -15,14 +15,14 @@ print_func_t get_print_function(char specifier)
 
 	factory_t factory[] = {
 		{'c', char_to_string},
-		{'d', int_to_string},
-		{'i', int_to_string},
+		{'d', int_to_string_handler},
+		{'i', int_to_string_handler},
 		{'s', string_cpy},
-		{'b', binary_to_string},
-		{'u', uint_to_string},
-		{'x', hexa_lower_to_string},
-		{'X', hexa_upper_to_string},
-		{'o', octal_to_string},
+		{'b', binary_to_string_handler},
+		{'u', uint_to_string_handler},
+		{'x', hexa_lower_to_string_handler},
+		{'X', hexa_upper_to_string_handler},
+		{'o', octal_to_string_handler},
 		{'S', custom_string_cpy},
 		{'p', pointer_to_string},
 		{'\0', NULL}
@@ -30,7 +30,7 @@ print_func_t get_print_function(char specifier)
 
 	for (i = 0; factory[i].specifier != '\0'; i++)
 		if (factory[i].specifier == specifier)
-			return (factory[i].print);
+			return (factory[i].handler);
 
 	return (NULL);
 }

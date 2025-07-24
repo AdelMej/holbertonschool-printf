@@ -11,11 +11,13 @@
  * Note: If the input string is NULL, "(null)" is copied instead.
  *       The caller is responsible for freeing the returned string.
  */
-char *string_cpy(va_list args)
+char *string_cpy(format_specifier_t *format_specifier, va_list args)
 {
 	char *str = va_arg(args, char *);
 	char *cpy;
 	unsigned int i, size;
+
+	(void)format_specifier;
 
 	if (str == NULL)
 		str = "(null)";

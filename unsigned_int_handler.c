@@ -2,76 +2,35 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-/* Function declarations */
-unsigned int _sizeofuint(unsigned int number);
-
 /**
- * uint_to_string - Converts an unsigned int from va_list to a string.
- * @args: A va_list containing the unsigned int to convert.
+ * uint_to_string_handler - Selects and calls the correct function to convert
+ *                          an unsigned integer to a string based on length modifiers.
+ * @format_specifier: Pointer to a format_specifier_t struct with formatting details.
+ * @args: A va_list containing the unsigned integer to convert.
  *
- * Return: Pointer to a newly allocated string representing the number,
+ * Return: Pointer to a newly allocated string representing the unsigned integer,
  *         or NULL if memory allocation fails.
  *
- * Description: Allocates sufficient memory to store the string
- *              representation of the unsigned int including the null
- *              terminator. Returns "0" as a string if number is zero.
- *              The caller is responsible for freeing the returned string.
+ * Description: Dispatches to the appropriate conversion function based on the
+ *              length modifier ('', 'l', 'll', 'h', 'hh') found in the format specifier.
+ *              The returned string must be freed by the caller.
  */
-char *uint_to_string(va_list args)
+char *uint_to_string_handler(format_specifier_t *format_specifier, va_list args)
 {
-	unsigned int number = va_arg(args, unsigned int);
-	char *str;
-	unsigned int size, temp, i;
-
-	size = _sizeofuint(number);
-	str = malloc(size);
-	if (str == NULL)
-		return (NULL);
-
-	if (number == 0)
+	if (format_specifier->length[0] == '\0')
 	{
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
+		return (uint_to_string_default(args));
+	}
+	else if (format_specifier->length[0] == 'l')
+	{
+		return (uint_to_string_l(args));
+	}
+	else if (format_specifier->length[0] == 'h')
+	{
+		if (format_specifier->length[1] == 'h')
+			return (uint_to_string_hh(args));
+		return (uint_to_string_h(args));
 	}
 
-	str[size - 1] = '\0';
-		temp = number;
-
-	for (i = 0; temp > 0; i++)
-	{
-		str[size - i - 2] = (temp % 10) + '0';
-		temp /= 10;
-	}
-
-	return (str);
-}
-
-/**
- * _sizeofuint - Calculates the length of an unsigned int number as a string.
- * @number: The unsigned int number to calculate size for.
- *
- * Return: The size needed to represent the number as a string including
- *         the null terminator.
- *
- * Description: Returns 2 if number is 0 (one digit plus null terminator),
- *              otherwise returns the number of digits plus one for the
- *              null terminator.
- */
-unsigned int _sizeofuint(unsigned int number)
-{
-	unsigned int temp, size = 0;
-
-	if (number == 0)
-		return (2);
-
-	temp = number;
-
-	while (temp > 0)
-	{
-		temp /= 10;
-		size++;
-	}
-
-	return (size + 1); /* for null terminator */
+	return (uint_to_string_default(args));
 }

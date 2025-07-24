@@ -19,13 +19,14 @@ void nil_string(char *str);
  * Return: pointer to the newly allocated string representing the pointer,
  *         or NULL if memory allocation fails
  */
-char *pointer_to_string(va_list args)
+char *pointer_to_string(format_specifier_t *format_specifier, va_list args)
 {
 	void *ptr = va_arg(args, void *);
 	unsigned long address, temp;
 	char *str, *strptr;
 	unsigned int size;
 
+	(void)format_specifier;
 	address = (unsigned long)ptr;
 	if (ptr == NULL)
 	{

@@ -17,13 +17,14 @@ char *custom_hex_helper(unsigned char str);
  * Return: Pointer to a newly allocated string with non-printable characters
  *         escaped, or NULL if memory allocation fails
  */
-char *custom_string_cpy(va_list args)
+char *custom_string_cpy(format_specifier_t *format_specifier, va_list args)
 {
 	unsigned int i = 0, j = 0;
 	int size = 0;
 	char *to_print;
 	char *strcpy, *temp;
 
+	(void)format_specifier;
 	to_print = va_arg(args, char *);
 	if (to_print == NULL)
 		to_print = "(null)";
