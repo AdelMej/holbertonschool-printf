@@ -112,7 +112,7 @@ This modular architecture enables a flexible printf implementation that can evol
 - 🏗️ [Compilation](#compilation)
 - 📄 [Restrictions](#restrictions)
 - ⚒️ [Feature](#feature)
-- ➕ [Adding a New Specifier](#newSpecifier)
+- ➕ [Adding a New Specifier](#addSpecifier)
 - 🔨 [Tech Stack](#tech-stack)
 - 📂 [Files Description](#files-description)
 - 👷🏼‍♂️👷🏼‍♂️ [Authors](#authors)
@@ -293,7 +293,7 @@ Expected output:
 $: Toto is 18 years old.
 ```
 
-## ➕ <span id="newSpecifier">Adding a New Specifier</span>
+## ➕ <span id="addSpecifier">Adding a New Specifier</span>
 
 To extend `_printf` with a new format specifier, follow these steps:
 
