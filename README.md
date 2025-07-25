@@ -16,6 +16,7 @@ The handler function receives the va_list argument and formatting information. I
 
 ### Standard Pipeline Processing
 The generated string is passed through a standard pipeline that applies formatting such as width, flags, and precision to produce the final output string.
+
 Note: The pipeline is specifier-dependent, meaning it adapts its processing steps based on the type of specifier to ensure correct formatting behavior.
 
 ### Output and Cleanup
@@ -29,9 +30,13 @@ The standard pipeline then processes the formatted string to apply width, flags,
 
 #### Important notes:
 All dynamically allocated strings are freed after printing to avoid memory leaks.
+
 Handlers must ensure to return NULL if allocation fails.
+
 If the input string pointer for a %s-style specifier is NULL, it is safely replaced with the string "(null)" to avoid undefined behavior.
+
 Undefined or missing arguments for specifiers (e.g., calling %r without an argument) can cause undefined behavior and should be avoided.
+
 To verify memory safety, valgrind has been used extensively during development, showing no leaks or invalid reads/writes after fixes.
 
 ```
@@ -66,16 +71,26 @@ To verify memory safety, valgrind has been used extensively during development, 
 
 ## 📄 <span id="description">Description</span>
 
-_printf is a function trying to mimic the behavior of standard `printf` in C.
-<br>The principal usecase of `_printf` is to print a string.
+printf_factory is a modular version of the standard C printf.
+It focuses on printing formatted strings, with an architecture that makes adding new specifiers and features easy.
 
 ## 🎓 <span id="objectives">Objectives</span>
 
-- This `_printf` function allow to print formatted data to the standard output.
-- In mandatory task :
-   - Basic conversion specifiers such as %c, %s, %i and %d
-- In Advanced task :
-   - %b, %o, %x, %p, and others.
+- **Mandatory Features:**
+  - Support for basic format specifiers:
+    - `%c` – character
+    - `%s` – string
+    - `%d` – signed decimal integer
+    - `%i` – signed integer (identical to `%d`)
+
+- **Advanced Features:**
+  - Support for additional specifiers:
+    - `%b` – binary
+    - `%o` – octal
+    - `%x` – hexadecimal (lowercase)
+	- `%X` - hexadecimal (uppercase)
+    - `%p` – pointer address
+    - Custom extensions (`%r`, `%S`, `%R`, etc.)
 
 ## 📋 <span id="flowchart">Flow chart</span>
 
