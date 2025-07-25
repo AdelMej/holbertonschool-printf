@@ -211,8 +211,9 @@ int main(void)
     _printf("%i\n", -1);                      // Print an integer (same as %d)
     return (0);
 }
+```
 
-### 🔹 Variadic Function
+### 🔹 Variadic Function
 _printf is a variadic function, meaning it accepts a variable number of arguments.
 
 ✅ Function Prototype
