@@ -301,7 +301,7 @@ To extend `_printf` with a new format specifier, follow these steps:
    Implement a function that accepts the format specifier data and variadic arguments, processes them, and returns a dynamically allocated formatted string.
 
 2. **Register the handler in the factory**  
-   Add an entry in the specifier-to-handler mapping (in `printf_factory`) linking your new specifier character to your handler function.
+   Add an entry in the specifier-to-handler mapping (in `get_print_function`) linking your new specifier character to your handler function.
 
 3. **Update parsing logic (if necessary)**  
    If your specifier requires additional metadata (flags, width, precision), update the format specifier parsing to capture this.
