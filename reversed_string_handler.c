@@ -23,11 +23,6 @@ char *reversed_string_handler(format_specifier_t *fmt, va_list args)
 	unsigned int length = 0;
 	char *str = va_arg(args, char *);
 
-	printf("[DEBUG] reversed_string_handler received pointer: %p\n", (void *)str);
-	if (str)
-		printf("[DEBUG] string value: '%s'\n", str);
-	else
-		printf("[DEBUG] string is NULL\n");
 	(void)fmt;
 
 	if (str == NULL)
