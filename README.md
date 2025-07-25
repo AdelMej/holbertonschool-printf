@@ -2,6 +2,24 @@
 ## Overview
 printf_factory is a custom implementation of the C printf function, designed with modularity and extensibility in mind. It supports a wide range of standard and custom format specifiers, comprehensive handling of length modifiers, flags, width, and precision, all managed through a centralized factory system.
 
+## Architecture & Flow
+printf_factory is designed with modularity and extensibility in mind. Here’s how it works step-by-step:
+
+### Parsing
+The input format string is scanned to identify format specifiers along with any flags, width, precision, and length modifiers.
+
+### Handler Dispatch
+For each specifier, the factory queries the format_handler function, which calls get_function_handler to retrieve the corresponding handler function.
+
+### Specifier Handling
+The handler function receives the va_list argument and formatting information. It processes the input according to the specifier type and length modifiers (like l, h, hh), then returns a newly allocated string representing the formatted data.
+
+### Standard Pipeline Processing
+The generated string is passed through a standard pipeline that applies formatting such as width, flags, and precision to produce the final output string.
+Note: The pipeline is specifier-dependent, meaning it adapts its processing steps based on the type of specifier to ensure correct formatting behavior.
+
+### Output and Cleanup
+The fully formatted string is then printed or stored as needed. Memory allocated by handlers is freed appropriately to avoid leaks.
 ## 🔖 Table of contents
 
 <details>
