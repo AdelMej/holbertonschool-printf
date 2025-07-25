@@ -299,35 +299,35 @@ $: Toto is 18 years old.
 | [`binary_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler.c)| Convert unsigned int in binary depending on length (long,short,unsigned char) |
 | [`binary_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler_length.c)| Provide functions for dealing with length for binary handler|
 | [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c)| convert unsigned int to a string depending on base (binary, octale, haxadecimal).|
-| [`custom_handler_string.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/custom_handler_string.c)| Create string givent argument into a string where special char are converted in hexa |
-| [`final_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/final_handler.c)| Functions to apply width flags and precision |
-| [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c)| Function to deal with flag |
-| [`flag_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_helper.c)| Provide functions for dealing with flag handler|
+| [`custom_handler_string.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/custom_handler_string.c)| Create string given in argument into a string where special characters are converted in hexadecimal|
+| [`final_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/final_handler.c)| Functions to apply width, flags and precision|
+| [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c)| Functions to deal with flags |
+| [`flag_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_helper.c)| Provides helper functions for flag_handler|
 | [`get_print_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_print_function.c)| Function that returns a pointer to a function handler.|
 | [`hexa_lowercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler.c)| Convert unsigned int in lowercase hexadecimal depending on length (long,short,unsigned char)|
-| [`hexa_lowercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler_length.c)|Provide functions for dealing with length for hexa lowercase handler|
+| [`hexa_lowercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler_length.c)|Provides helper functions for dealing with length to hexa_lowercase_handler|
 | [`hexa_uppercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler.c)| Convert unsigned int in uppercase hexadecimal depending on length (long,short,unsigned char)|
-| [`hexa_uppercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler_length.c)| Provide functions for dealing with length for hexa uppercase handler|
-| [`int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler.c)| Convert a char or int in string |
-| [`int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler_length.c)| Provide functions for dealing with length for integer handler |
-| [`int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_helper.c)| Function to provide the size to make a string |
+| [`hexa_uppercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler_length.c)| Provides helper functions for dealing with length to hexa_uppercase_handler|
+| [`int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler.c)| Convert a char or int into a string |
+| [`int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler_length.c)| Provides helper functions for dealing with length to int_handler |
+| [`int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_helper.c)| Function to provide the size for malloc |
 | [`length_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/length_handler.c)| Function to deal with length |
-| [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h)|Header file containting structurs, handler function and their helpers|
+| [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h)|Header file containting structures, handler functions and their helpers|
 | [`octal_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler.c)| Convert unsigned int in octale depending on length (long,short,unsigned char)|
-| [`octal_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler_length.c)|Provide functions for dealing with length for octal handler |
-| [`pointer_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/pointer_handler.c)| Provide string of a pointer in hexa|
+| [`octal_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler_length.c)|Provides helper functions for dealing with length to octal handler |
+| [`pointer_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/pointer_handler.c)| handles pointer conversion in hexadecimal |
 | [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c)|Function to deal with precision |
 | [`printf_factory.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/printf_factory.c)| Function that mimics printf behavior |
-| [`putchar_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/putchar_helper.c)|Function that provide buffering and printing for string |
-| [`reversed_string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/reversed_string_handler.c)| Function that return a revers string |
-| [`rot13_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/rot13_handler.c)| Convert string in rot13 |
-| [`string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_handler.c)|Provide the copy of string |
-| [`string_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_helper.c)| Provide utility function for string operations |
-| [`unsigned_int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler.c)| Convert a unsigned int in string |
-| [`unsigned_int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler_length.c)| Provide functions for dealing with length for unsigned int handler |
-| [`unsigned_int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_helper.c)| Function to provide the size to make a string for unsigned int |
-| [`width_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/width_handler.c)| Function to deal with width|
-| [`man_3_printf`](https://github.com/AdelMej/holbertonschool-printf/blob/main/man_3_printf)| Manual page of our function `printf`.|
+| [`putchar_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/putchar_helper.c)| Functions that provide buffering and printing for _printf |
+| [`reversed_string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/reversed_string_handler.c)| Functions that returns a reversed string |
+| [`rot13_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/rot13_handler.c)| Converts a string in rot13 |
+| [`string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_handler.c)| Provides a newly allocated copy of a string |
+| [`string_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_helper.c)| Provides utility functions for string operations |
+| [`unsigned_int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler.c)| Converts an unsigned int into string |
+| [`unsigned_int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler_length.c)| Provide functions for dealing with length to unsigned int handler |
+| [`unsigned_int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_helper.c)| Function to provide the size for malloc to unsigned int |
+| [`width_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/width_handler.c)| Function to deal with width |
+| [`man_3_printf`](https://github.com/AdelMej/holbertonschool-printf/blob/main/man_3_printf)| Manual page for `printf`.|
 
 ## 👷🏼‍♂️👷🏼‍♂️ <span id="authors">Authors</span>
 
