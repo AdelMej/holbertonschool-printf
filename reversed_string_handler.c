@@ -4,14 +4,16 @@
 #include <stdlib.h>
 
 /**
- * reversed_string_handler - Returns a newly allocated
- *							 reversed copy of the input string.
+ * reversed_string_handler - Returns a newly allocated reversed copy
+ *                            of the input string.
  * @fmt: Pointer to format_specifier_t struct (unused).
  * @args: va_list containing the input string to reverse.
  *
  * Return: Pointer to a new string that is the reverse of the input string,
  *         or NULL if memory allocation fails.
- *         The caller is responsible for freeing the returned string.
+ *
+ * Description: If the input string is NULL, returns a duplicate of "(null)".
+ * The caller is responsible for freeing the returned string.
  */
 char *reversed_string_handler(format_specifier_t *fmt, va_list args)
 {
@@ -24,7 +26,7 @@ char *reversed_string_handler(format_specifier_t *fmt, va_list args)
 	(void)fmt;
 
 	if (str == NULL)
-		return (NULL);
+		return (_strdup("(null)"));
 
 	length = _strlen(str);
 	reverse_string = malloc(length + 1);
