@@ -13,7 +13,7 @@ print_func_t get_print_function(char specifier)
 {
 	unsigned int i;
 
-	factory_t factory[] = {
+	static factory_t factory[] = {
 		{'c', char_to_string},
 		{'d', int_to_string_handler},
 		{'i', int_to_string_handler},
