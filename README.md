@@ -306,16 +306,22 @@ To extend `_printf` with a new format specifier, follow these steps:
 3. **Update parsing logic (if necessary)**  
    If your specifier requires additional metadata (flags, width, precision), update the format specifier parsing to capture this.
 
-4. **Add tests**  
+4. **Add tests**
    Write unit tests that cover your new specifier, including edge cases.
 
 ### Example: Adding `%r` for reversed strings
 
 - Implement `reverse_handler()` that reverses the input string and returns the result.
 - Register `'r'` → `reverse_handler` in the factory map.
-- Test with:  
+- Test with:
   ```c
   _printf("Reversed: %r", "hello");
+Expected output:
+```bash
+$: Reversed: olleh
+```
+
+This modular approach allows _printf to be easily extended without modifying core logic.
 
 ## 🔨 <span id="tech-stack">Tech stack</span>
 
