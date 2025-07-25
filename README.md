@@ -342,7 +342,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 | [`binary_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler_length.c)| Provide functions for dealing with length for binary handler|
 | [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c)| convert unsigned int to a string depending on base (binary, octale, haxadecimal).|
 | [`custom_handler_string.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/custom_handler_string.c)| Create string given in argument into a string where special characters are converted in hexadecimal|
-| [`standard_pipeline.c](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline.c)| Functions to apply width, flags and precision|
+| [`standard_pipeline.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline.c)| Functions to apply width, flags and precision|
 | [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c)| Functions to deal with flags |
 | [`flag_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_helper.c)| Provides helper functions for flag_handler|
 | [`get_print_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_print_function.c)| Function that returns a pointer to a function handler.|
