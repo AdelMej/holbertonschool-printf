@@ -25,6 +25,7 @@ print_func_t get_print_function(char specifier)
 		{'o', octal_to_string_handler},
 		{'S', custom_string_cpy},
 		{'p', pointer_to_string},
+		{'r', reversed_string_handler},
 		{'\0', NULL}
 	};
 

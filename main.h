@@ -65,6 +65,7 @@ char *char_to_string(format_specifier_t *format_specifier, va_list args);
 char *string_cpy(format_specifier_t *format_specifier, va_list args);
 char *custom_string_cpy(format_specifier_t *format_specifier, va_list args);
 unsigned int _strlen(char *str);
+char *reversed_string_handler(format_specifier_t *fmt, va_list args);
 
 /* Numbers */
 /* --- int to string --- */
