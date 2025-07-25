@@ -175,22 +175,22 @@ make clean
  - This will delete the binary and all .o object files to ensure a fresh build.
 ## 📄 <span id="restrictions">Restrictions</span>
 
-The restrictions are as follows:
-- `Must follow betty standard`
+- The restrictions are as follows:
+	- `Must follow betty standard`
 
-- `No more than 5 functions per file`
+	- `No more than 5 functions per file`
 
-- `No use a global variables`
+	- `No use of global variables`
 
-Authorized functions and macros:
+ - Authorized functions and macros:
 
-- `write`
-- `malloc`
-- `free`
-- `va_start`
-- `va_end`
-- `va_copy`
-- `va_arg`
+	- `write`
+	- `malloc`
+	- `free`
+	- `va_start`
+	- `va_end`
+	- `va_copy`
+	- `va_arg`
 
 
 
