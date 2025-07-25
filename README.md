@@ -112,6 +112,7 @@ This modular architecture enables a flexible printf implementation that can evol
 - 🏗️ [Compilation](#compilation)
 - 📄 [Restrictions](#restrictions)
 - ⚒️ [Feature](#feature)
+- ➕ [Adding a New Specifier](#newSpecifier)
 - 🔨 [Tech Stack](#tech-stack)
 - 📂 [Files Description](#files-description)
 - 👷🏼‍♂️👷🏼‍♂️ [Authors](#authors)
@@ -291,6 +292,30 @@ Expected output:
 ```bash
 $: Toto is 18 years old.
 ```
+
+## ➕ <span id="newSpecifier">Adding a New Specifier</span>
+
+To extend `_printf` with a new format specifier, follow these steps:
+
+1. **Create the handler function**  
+   Implement a function that accepts the format specifier data and variadic arguments, processes them, and returns a dynamically allocated formatted string.
+
+2. **Register the handler in the factory**  
+   Add an entry in the specifier-to-handler mapping (in `printf_factory`) linking your new specifier character to your handler function.
+
+3. **Update parsing logic (if necessary)**  
+   If your specifier requires additional metadata (flags, width, precision), update the format specifier parsing to capture this.
+
+4. **Add tests**  
+   Write unit tests that cover your new specifier, including edge cases.
+
+### Example: Adding `%r` for reversed strings
+
+- Implement `reverse_handler()` that reverses the input string and returns the result.
+- Register `'r'` → `reverse_handler` in the factory map.
+- Test with:  
+  ```c
+  _printf("Reversed: %r", "hello");
 
 ## 🔨 <span id="tech-stack">Tech stack</span>
 
