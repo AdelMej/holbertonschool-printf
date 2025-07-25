@@ -147,15 +147,36 @@ man ./man_3_printf
 ```
 
 ## ⚙️ <span id="compilation">Compilation</span>
-The code should be compiled like this:
 
-1. Use `make` cmd in terminal for compilate the file in .o and executable file.
-   - This will generate all the executable named `.o` .
-2. Use `make clean` cmd in terminal for clean all the executable file.
+You can compile the project using the provided `Makefile`.
 
+### 🔧 Building
+
+Run:
+```bash
+make
+```
+
+- This will:
+
+	- Compile all .c source files into .o object files.
+
+	- Generate the binary (default: _printf) — you can change the binary name in the Makefile.
+
+	- Note: You must provide your own main.c file, or the binary will not be created.
+
+## 🧹 Cleaning
+### To remove all compiled files, run:
+
+```bash
+make clean
+```
+
+ - This will delete the binary and all .o object files to ensure a fresh build.
 ## 📄 <span id="restrictions">Restrictions</span>
 
 The restrictions are as follows:
+- `Must follow betty standard`
 
 - `No more than 5 functions per file`
 
