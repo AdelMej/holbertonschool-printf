@@ -165,8 +165,8 @@ make
 
 	- Note: You must provide your own main.c file, or the binary will not be created.
 
-## 🧹 Cleaning
-### To remove all compiled files, run:
+### 🧹 Cleaning
+#### To remove all compiled files, run:
 
 ```bash
 make clean
