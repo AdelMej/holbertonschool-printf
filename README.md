@@ -112,7 +112,7 @@ This modular architecture enables a flexible printf implementation that can evol
 - 🏗️ [Compilation](#compilation)
 - 📄 [Restrictions](#restrictions)
 - ⚒️ [Feature](#feature)
-- ➕ [Adding a New Specifier](#adding-a-new-specifier)
+- ➕ [Adding a New Specifier](#-adding-a-new-specifier)
 - 🔨 [Tech Stack](#tech-stack)
 - 📂 [Files Description](#files-description)
 - 👷🏼‍♂️👷🏼‍♂️ [Authors](#authors)
