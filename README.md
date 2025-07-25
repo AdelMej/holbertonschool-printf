@@ -298,7 +298,7 @@ $: Toto is 18 years old.
 | [`README.md`](https://github.com/JeremyLrs/holbertonschool-printf/blob/main/README.md)| The `README.md` file.|
 | [`binary_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler.c)| Convert unsigned int in binary depending on length (long,short,unsigned char) |
 | [`binary_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler_length.c)| Provide functions for dealing with length for binary handler|
-| [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c)| convert unsigned int in to givent (binary, octale, haxadecimal).|
+| [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c)| convert unsigned int to a string depending on base (binary, octale, haxadecimal).|
 | [`custom_handler_string.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/custom_handler_string.c)| Create string givent argument into a string where special char are converted in hexa |
 | [`final_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/final_handler.c)| Functions to apply width flags and precision |
 | [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c)| Function to deal with flag |
