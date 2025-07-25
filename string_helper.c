@@ -21,7 +21,7 @@ unsigned int _strlen(char *str)
 }
 
 /**
- * _stdrup - Duplicates a string into a newly allocated memory space.
+ * _strdup - Duplicates a string into a newly allocated memory space.
  * @str: The input string to duplicate.
  *
  * Return: Pointer to the newly allocated copy of the string,
