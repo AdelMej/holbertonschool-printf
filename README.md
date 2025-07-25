@@ -128,19 +128,23 @@ flowchart TD
 
 ```
 ##  🏗️ <span id="instalation">Instalation</span>
-To install, you need to clone the directory as follows:
+To install, you need to clone the repository as follows:
 ```
 git clone https://github.com/JeremyLrs/holbertonschool-printf.git
 cd holbertonschool-printf
 ```
 
-To use a manual :
+To use the manual :
 
 ```
 sudo apt install groff /* To install Groff */
 groff -Tascii -man man_3_printf /* To use manual with groff */
+```
 
 ```
+man ./man_3_printf
+```
+
 
 ## ⚙️ <span id="compilation">Compilation</span>
 The code should be compiled like this:
