@@ -91,7 +91,7 @@ Example output:
 This confirms that `_printf` is leak-free and memory-safe.
 ## 🧩 Modularity
 
-_printf_factory is designed with modularity at its core, making it easy to extend and maintain. Each format specifier has its own dedicated handler function, which is registered in a central factory system. This approach provides several benefits:
+printf_factory is designed with modularity at its core, making it easy to extend and maintain. Each format specifier has its own dedicated handler function, which is registered in a central factory system. This approach provides several benefits:
 
 - **Separation of Concerns:** Each handler is responsible for formatting a specific specifier, keeping logic isolated and focused.
 - **Ease of Extension:** Adding a new format specifier is as simple as implementing a new handler and registering it in the factory.
