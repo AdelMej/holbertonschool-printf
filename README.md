@@ -1,7 +1,6 @@
-# `Printf` function
-
-Welcome to our custom printf function project.
-This is our first group project at Holberton school
+# `printf_factory` — Modular and Extensible printf Implementation
+## Overview
+printf_factory is a custom implementation of the C printf function, designed with modularity and extensibility in mind. It supports a wide range of standard and custom format specifiers, comprehensive handling of length modifiers, flags, width, and precision, all managed through a centralized factory system.
 
 ## 🔖 Table of contents
 
