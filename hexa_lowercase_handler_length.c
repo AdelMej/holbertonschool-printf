@@ -42,7 +42,7 @@ char *hexa_lower_to_string_default(va_list args)
 	if (str == NULL)
 		return (NULL);
 
-	ptr = convert_base(number, str, 16, "0123456789ABCDEF");
+	ptr = convert_base(number, str, 16, "0123456789abcdef");
 	*ptr = '\0';
 
 	return (str);
@@ -77,7 +77,7 @@ char *hexa_lower_to_string_l(va_list args)
 	if (str == NULL)
 		return (NULL);
 
-	ptr = convert_base(number, str, 16, "0123456789ABCDEF");
+	ptr = convert_base(number, str, 16, "0123456789abcdef");
 	*ptr = '\0';
 
 	return (str);
@@ -123,7 +123,7 @@ char *hexa_lower_to_string_h(va_list args)
 	if (str == NULL)
 		return (NULL);
 
-	ptr = convert_base(number, str, 16, "0123456789ABCDEF");
+	ptr = convert_base(number, str, 16, "0123456789abcdef");
 	*ptr = '\0';
 
 	return (str);
@@ -169,7 +169,7 @@ char *hexa_lower_to_string_hh(va_list args)
 	if (str == NULL)
 		return (NULL);
 
-	ptr = convert_base(number, str, 16, "0123456789ABCDEF");
+	ptr = convert_base(number, str, 16, "0123456789abcdef");
 	*ptr = '\0';
 
 	return (str);
