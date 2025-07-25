@@ -1,49 +1,42 @@
 #include "main.h"
+#include <stdlib.h>
 #include <stdarg.h>
-/*function delaration */
-void print_binary_helper(unsigned int number, int *length);
-
 
 /**
- * print_binary - function to convert to binary
+ * binary_to_string_handler - Dispatches binary conversion based on length.
+ * @format_specifier: Pointer to the format_specifier_t struct containing
+ *                    formatting info including length modifiers.
+ * @args: va_list containing the value to convert to binary.
  *
- * @args: it's a va_list
+ * This function checks the length modifier in the format specifier
+ * and calls the appropriate binary conversion function:
+ * - No modifier: uses binary_to_string_default
+ * - 'l': uses binary_to_string_l
+ * - 'll': uses binary_to_string_ll
+ * - 'h': uses binary_to_string_h
+ * - 'hh': uses binary_to_string_hh
  *
- * Return: length of string
+ * Return: Pointer to a dynamically allocated string containing the binary
+ *         representation of the number, or NULL on failure.
  */
-
-int print_binary(va_list args)
+char *binary_to_string_handler(
+	format_specifier_t *format_specifier,
+	va_list args)
 {
-	unsigned int number = 0;
-	int length = 0;
-
-	number = va_arg(args, unsigned int);
-
-	if (number == 0)
+	if (format_specifier->length[0] == '\0')
 	{
-		_putchar('0');
-		return (1);
+		return (binary_to_string_default(args));
+	}
+	else if (format_specifier->length[0] == 'l')
+	{
+		return (binary_to_string_l(args));
+	}
+	else if (format_specifier->length[0] == 'h')
+	{
+		if (format_specifier->length[1] == 'h')
+			return (binary_to_string_hh(args));
+		return (binary_to_string_h(args));
 	}
 
-	print_binary_helper(number, &length);
-
-	return (length);
-
-}
-/**
- * print_binary_helper - function to print binary
- *
- * @number: the number
- * @length: size of binary
- *
- * Return: length of the print
- */
-void print_binary_helper(unsigned int number, int *length)
-{
-	if (number == 0)
-		return;
-
-	print_binary_helper(number / 2, length);
-	_putchar((number % 2) + '0');
-	(*length)++;
+	return (binary_to_string_default(args));
 }

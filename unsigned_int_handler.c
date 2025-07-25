@@ -1,39 +1,34 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 
 /**
- * print_unsigned_int - Prints an unsigned int.
- * @args: A va_list containing the unsigned int to print.
+ * uint_to_string_handler - Chooses unsigned int to string conversion function.
+ * @format_specifier: Pointer to format specifier struct with length info.
+ * @args: Variadic argument list containing the number to convert.
  *
- * Return: The number of characters printed.
+ * Selects the correct unsigned integer conversion function based on
+ * the length modifier in the format specifier.
+ *
+ * Return: Pointer to a newly allocated string representing the number.
  */
-int print_unsigned_int(va_list args)
+char *uint_to_string_handler(format_specifier_t *format_specifier,
+							 va_list args)
 {
-	unsigned int number = va_arg(args, unsigned int);
-	int digits[10]; /* Maximum digits for unsigned int */
-	unsigned int index = 0;
-	int i, length = 0;
-
-	/* Print '0' if number is zero and return */
-	if (number == 0)
+	if (format_specifier->length[0] == '\0')
 	{
-		_putchar('0');
-		return (1);
+		return (uint_to_string_default(args));
+	}
+	else if (format_specifier->length[0] == 'l')
+	{
+		return (uint_to_string_l(args));
+	}
+	else if (format_specifier->length[0] == 'h')
+	{
+		if (format_specifier->length[1] == 'h')
+			return (uint_to_string_hh(args));
+		return (uint_to_string_h(args));
 	}
 
-	/* Store digits in reverse order */
-	do {
-		digits[index] = number % 10;
-		number /= 10;
-		index++;
-	} while (number > 0);
-
-	/* Print digits in correct order */
-	for (i = index - 1; i >= 0; i--)
-	{
-		_putchar(digits[i] + '0');
-		length++;
-	}
-
-	return (length);
+	return (uint_to_string_default(args));
 }

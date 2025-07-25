@@ -1,26 +1,39 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- * print_string - Prints a string.
- * @args: A va_list containing the string to print.
+ * string_cpy - Copies a string argument from a va_list.
+ * @format_specifier: Pointer to the format specifier struct (unused).
+ * @args:            Variadic argument list containing the string to copy.
  *
- * Return: The number of characters printed.
+ * Description:
+ *   Retrieves a string argument from the variadic list. If the string is NULL,
+ *   substitutes it with the string "(null)".
+ *   Allocates memory for a copy of the
+ *   string, copies it, and returns the newly allocated copy.
+ *
+ * Return: Pointer to the newly allocated string copy,
+ * or NULL if memory allocation fails.
  */
-int print_string(va_list args)
+char *string_cpy(format_specifier_t *format_specifier, va_list args)
 {
-	unsigned int index;
 	char *str = va_arg(args, char *);
-	int length = 0;
+	char *cpy;
+	unsigned int i, size;
+
+	(void)format_specifier;
 
 	if (str == NULL)
 		str = "(null)";
 
-	for (index = 0; str[index] != '\0'; index++)
-	{
-		_putchar(str[index]);
-		length++;
-	}
+	size = _strlen(str);
+	cpy = malloc(size + 1);
+	if (cpy == NULL)
+		return (NULL);
 
-	return (length);
+	for (i = 0; i <= size; i++)
+		cpy[i] = str[i];
+
+	return (cpy);
 }

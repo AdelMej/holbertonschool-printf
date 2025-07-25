@@ -1,62 +1,67 @@
 #include "main.h"
+#include <stdlib.h>
+
+/* Function declarations */
+unsigned int _sizeofint(int number);
 
 /**
- * print_char - Prints a character.
- * @args: A va_list containing the character to print.
+ * char_to_string - Converts a character from a va_list to a string.
+ * @format_specifier: Pointer to format_specifier_t struct (unused here).
+ * @args: A va_list containing the character to convert.
  *
- * Return: Number of characters printed (always 1).
+ * Return: Pointer to a newly allocated string containing the character,
+ *         or NULL if memory allocation fails.
+ *
+ * Note: The caller is responsible for freeing the returned string.
  */
-int print_char(va_list args)
+char *char_to_string(format_specifier_t *format_specifier, va_list args)
 {
 	char c = va_arg(args, int);
+	char *str;
 
-	_putchar(c);
-	return (1);
+	(void)format_specifier; /* unused */
+	str = malloc(2);
+	if (str == NULL)
+		return (NULL);
+
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
 }
 
 /**
- * print_number - Prints an integer number.
- * @args: A va_list containing the integer to print.
+ * int_to_string_handler - Dispatches to the correct integer-to-string function
+ *                 based on the length modifier in the format specifier.
+ * @format_specifier: Pointer to the format specifier
+ *					  struct containing length info
+ * @args: va_list containing the integer argument to convert
  *
- * Return: Number of characters printed.
+ * Return: Pointer to a newly allocated string
+ *		   representing the formatted integer,
+ *         or NULL if memory allocation fails
+ *         or an unknown length modifier is used.
+ *
+ * Description: Handles standard length modifiers "", "l", "ll", "h", and "hh",
+ * and calls the appropriate conversion function.
+ * Falls back to default behavior
+ * if no length modifier is present or unrecognized.
  */
-int print_number(va_list args)
+char *int_to_string_handler(format_specifier_t *format_specifier, va_list args)
 {
-	int number = va_arg(args, int);
-	int digits[10]; /* Maximum digits for an int */
-	unsigned int index = 0, num = 0;
-	int i, length = 0;
-
-	if (number < 0)
+	if (format_specifier->length[0] == '\0')
 	{
-		_putchar('-');
-		num = (unsigned int)(-(long)number); /* Store absolute value */
-		length++;
+		return (int_to_string_default(args));
 	}
-	else
+	else if (format_specifier->length[0] == 'l')
 	{
-		num = (unsigned int)number;
+		return (int_to_string_l(args));
 	}
-
-	/* Print '0' if number is zero */
-	if (num == 0)
+	else if (format_specifier->length[0] == 'h')
 	{
-		_putchar('0');
-		return (length + 1); /* Include '-' if printed */
+		if (format_specifier->length[1] == 'h')
+			return (int_to_string_hh(args));
+		return (int_to_string_h(args));
 	}
 
-	/* Store digits in reverse order */
-	do {
-		digits[index] = num % 10;
-		num /= 10;
-		index++;
-	} while (num > 0);
-
-	/* Print digits in correct order */
-	for (i = index - 1; i >= 0; i--)
-	{
-		_putchar(digits[i] + '0');
-		length++;
-	}
-	return (length);
+	return (int_to_string_default(args));
 }

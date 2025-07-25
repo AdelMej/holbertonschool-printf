@@ -1,46 +1,41 @@
 #include "main.h"
 #include <stdarg.h>
-/* Function declarations */
-void print_octal_helper(unsigned int number, int *length);
+#include <stdlib.h>
 
 /**
- * print_octal - Prints an unsigned int in octal format.
- * @args: A va_list containing the unsigned int to print.
+ * octal_to_string_handler - Dispatches octal conversion based on length.
+ * @format_specifier: Pointer to the format_specifier_t struct containing
+ *                    formatting info including length modifiers.
+ * @args: va_list containing the value to convert to octal.
  *
- * Return: The number of characters printed.
+ * This function checks the length modifier in the format specifier
+ * and calls the appropriate octal conversion function:
+ * - No modifier: uses octal_to_string_default
+ * - 'l': uses octal_to_string_l
+ * - 'll': uses octal_to_string_ll
+ * - 'h': uses octal_to_string_h
+ * - 'hh': uses octal_to_string_hh
+ *
+ * Return: Pointer to a dynamically allocated string containing the octal
+ *         representation of the number, or NULL on failure.
  */
-int print_octal(va_list args)
+char *octal_to_string_handler(format_specifier_t *format_specifier,
+							  va_list args)
 {
-	unsigned int number;
-	int length = 0;
-
-	number = va_arg(args, unsigned int);
-
-	if (number == 0)
+	if (format_specifier->length[0] == '\0')
 	{
-		_putchar('0');
-		return (1);
+		return (octal_to_string_default(args));
+	}
+	else if (format_specifier->length[0] == 'l')
+	{
+		return (octal_to_string_l(args));
+	}
+	else if (format_specifier->length[0] == 'h')
+	{
+		if (format_specifier->length[1] == 'h')
+			return (octal_to_string_hh(args));
+		return (octal_to_string_h(args));
 	}
 
-	print_octal_helper(number, &length);
-
-	return (length);
-}
-
-
-/**
- * print_octal_helper - Recursively prints an unsigned int as octal.
- * @number: The number to print.
- * @length: Pointer to an int tracking the number of printed characters.
- *
- * Return: void.
- */
-void print_octal_helper(unsigned int number, int *length)
-{
-	if (number == 0)
-		return;
-
-	print_octal_helper(number / 8, length);
-	_putchar((number % 8) + '0');
-	(*length)++;
+	return (octal_to_string_default(args));
 }
