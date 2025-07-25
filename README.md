@@ -194,49 +194,52 @@ make clean
 
 
 
-## ⚒️ <span id="feature">Feature</span>
-### Typical usecase :
+## ⚒️ <span id="feature">Features</span>
 
-Use `_printf()` in your C programs as a direct substitute for the standard `printf` function.
+### 🔹 Basic Usage
 
-``` c
+You can use `_printf()` as a drop-in replacement for the standard `printf()` function in your C programs.
+
+```c
 #include "main.h"
 
 int main(void)
 {
-  _printf ("%c\n", 'A'); /* To print a char */
-  _printf ("%s\n", "My name is toto"); /* To print a string */
-  _printf ("%d\n", 12345); /* To print an integer */
-  _printf ("%i\n", -1); /* To print an Integer*/
-  return (0);
+    _printf("%c\n", 'A');                      // Print a character
+    _printf("%s\n", "My name is Toto");       // Print a string
+    _printf("%d\n", 12345);                   // Print a decimal number
+    _printf("%i\n", -1);                      // Print an integer (same as %d)
+    return (0);
 }
-```
 
-### _printf with argument :
-In `_printf` it's possible to give an infinit number of argument to the function.
-To do so `_printf` is variadic function.
+### 🔹 Variadic Function
+_printf is a variadic function, meaning it accepts a variable number of arguments.
 
-#### Prototype :
+✅ Function Prototype
+
 ```c
 int _printf(const char *format, ...);
 ```
-#### Specifier :
-With `_printf` it's possible to print diferent types using specifier
-In order to acces a specifier it's typical to use `"%"` follow the specifier.
-##### Specifier usecase with number :
-``` c
+
+### 🔹 Format Specifiers
+You can print various types by using format specifiers, which begin with a % character followed by a specific letter.
+
+#### Example: Using a Format Specifier with a Variable
+
+```c
 #include "main.h"
 
 int main(void)
 {
-  int age = 18;
-  _printf("Toto age is %d years old \n", age);
-  return (0);
+    int age = 18;
+    _printf("Toto is %d years old.\n", age);
+    return (0);
 }
 ```
-Expected output :
-`$: Toto age is 18 years old`
-
+Expected output:
+```bash
+$: Toto is 18 years old.
+```
 
 ## 🔨 <span id="tech-stack">Tech stack</span>
 
