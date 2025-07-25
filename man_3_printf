@@ -1,34 +1,60 @@
-.TH _PRINTF 3 "July 22, 2025" "Version 1.0" "_printf man page"
+.TH PRINTF_FACTORY 1 "2025-07-25" "Custom printf implementation"
+
 .SH NAME
-_printf \- function that mimics the standard printf in C
+printf_factory \- modular and extensible printf clone
+
 .SH SYNOPSIS
-.B _printf
-.RI "(const char *format, ...)"
+.B printf_factory
+\fIFORMAT_STRING\fR, \fIVARIABLE_ARGUMENTS\fR
+
 .SH DESCRIPTION
-.B _printf
-is a custom implementation of the standard C
-.BR printf (3)
-function. It produces output based on a format string that can include format specifiers.
-.SH FORMAT SPECIFIERS
-.TP
-.B %c
-Prints a single character.
-.TP
-.B %s
-Prints a string.
-.TP
-.B %d, %i
-Prints a signed decimal integer.
-.TP
-.B %b
-Prints a binary.
-.SH RETURN VALUE
-Returns the number of characters printed (excluding the null byte used to end output to strings).
-.SH EXAMPLES
-The following prints "Hello, world! 42":
-.PP
-_printf("Hello, %s! %d\\n", "world", 42);
-.SH AUTHORS
+\fBprintf_factory\fR is a custom implementation of the C
+\fIprintf\fR function supporting a variety of standard and custom format specifiers,
+with full handling of length modifiers, flags, width, and precision.
+
+.SH SUPPORTED SPECIFIERS
+Standard specifiers supported:
+.IP
+\fI%i, %d\fR — signed integers
+.IP
+\fI%b\fR — binary representation
+.IP
+\fI%o\fR — octal representation
+.IP
+\fI%x, %X\fR — hexadecimal representation (lowercase and uppercase)
+.IP
+\fI%s\fR — string
+.IP
+\fI%u\fR — unsigned integers
+
+.SH LENGTH MODIFIERS
+The following length modifiers are supported:
+.IP
+\fIhh\fR — signed char / unsigned char
+.IP
+\fIh\fR — short int / unsigned short int
+.IP
+\fIl\fR — long int / unsigned long int
+
+.SH FLAGS, WIDTH, AND PRECISION
+Handles standard flags, width, and precision specifiers in the format string.
+
+.SH CUSTOM SPECIFIERS
+Supports additional custom format specifiers:
+.IP
+\fI%S\fR — prints special characters as hexadecimal escape sequences
+.IP
+\fI%r\fR — reverses the string argument
+.IP
+\fI%R\fR — applies ROT13 cipher to the string argument
+
+.SH MEMORY MANAGEMENT
+Handler functions return freshly allocated strings which are then processed through
+a standard pipeline to apply width, flags, and precision before output.
+
+.SH EXTENSIBILITY
+New specifiers can be added easily by extending the handler functions and updating
+the dispatch mechanism.
+
+.SH AUTHOR
 Adel Mejrissi, Jeremy Laurens
-.SH BUGS
-Currently does not support all standard printf specifiers such as %f or %u.
