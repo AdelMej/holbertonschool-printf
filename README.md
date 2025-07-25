@@ -1,6 +1,34 @@
 # `printf_factory` — Modular and Extensible printf Implementation
-## Overview
-printf_factory is a custom implementation of the C printf function, designed with modularity and extensibility in mind. It supports a wide range of standard and custom format specifiers, comprehensive handling of length modifiers, flags, width, and precision, all managed through a centralized factory system.
+## 📝 Overview
+
+`_printf` is a custom implementation of the standard C `printf` function. It replicates much of its core functionality while supporting modular, scalable, and maintainable extensions.
+
+This project includes:
+
+- **Mandatory format specifiers:**
+  - `%c`, `%s`, `%d`, `%i`
+
+- **Advanced format specifiers:**
+  - `%b` – Binary representation
+  - `%o` – Octal
+  - `%x`, `%X` – Hexadecimal (lower/upper case)
+  - `%u` – Unsigned decimal
+  - `%p` – Pointer address
+
+- **Custom extensions:**
+  - `%S` – Prints strings, escaping non-printable characters in hex
+  - `%r` – Prints strings in reverse
+  - `%R` – Applies ROT13 encryption to strings
+
+- **Feature support:**
+  - Flags: `+`, space, `0`, `-`, `#`
+  - Field width and precision
+  - Length modifiers: `l`, `h`, `hh`
+
+The architecture is based on a **specifier-dependent pipeline**: each format specifier has its own handler function, managed through a dynamic dispatch table (factory model). This allows new specifiers to be added easily with minimal changes to the core.
+
+_This modular design ensures better maintainability_
+width, and precision, all managed through a centralized factory system.
 
 ## 🧠 Architecture & Flow
 
