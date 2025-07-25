@@ -35,42 +35,24 @@ If the input string pointer for a %s-style specifier is NULL, it is safely repla
 Undefined or missing arguments for specifiers (e.g., calling %r without an argument) can cause undefined behavior and should be avoided.
 To verify memory safety, valgrind has been used extensively during development, showing no leaks or invalid reads/writes after fixes.
 
-```
-==12345== HEAP SUMMARY:
-==12345==     in use at exit: 0 bytes in 0 blocks
-==12345==   total heap usage: 64 allocs, 64 frees, 1,398 bytes allocated
-==12345==
-==12345== All heap blocks were freed -- no leaks are possible
-==12345==
-==12345== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-```
-```
-## 🔖 Table of contents
+## 🔖 Table of Contents
 
 <details>
-  <summary>
-    CLICK TO ENLARGE 😇
-  </summary>
-  📄 <a href="#description">Description</a>
-  <br>
-  🎓 <a href="#objectives">Objectives</a>
-  <br>
-  📋 <a href="#flowchart">Flow Chart</a>
-  <br>
-  📥 <a href="#installation"> Installation </a>
-  <br>
-  🏗️ <a href="#compilation"> Compilation </a>
-  <br>
-  📄 <a href="#restrictions"> Restrictions </a>
-  <br>
-  ⚒️ <a href="#feature"> Feature </a>
-  <br>
-  🔨 <a href="#tech-stack">Tech stack</a>
-  <br>
-  📂 <a href="#files-description">Files description</a>
-  <br>
-  👷🏼‍♂️👷🏼‍♂️ <a href="#authors">Authors</a>
-  </details>
+<summary>CLICK TO ENLARGE 😇</summary>
+
+- 📄 [Description](#description)
+- 🎓 [Objectives](#objectives)
+- 📋 [Flow Chart](#flowchart)
+- 📥 [Installation](#instalation)
+- 🏗️ [Compilation](#compilation)
+- 📄 [Restrictions](#restrictions)
+- ⚒️ [Feature](#feature)
+- 🔨 [Tech Stack](#tech-stack)
+- 📂 [Files Description](#files-description)
+- 👷🏼‍♂️👷🏼‍♂️ [Authors](#authors)
+
+</details>
+
 
 ## 📄 <span id="description">Description</span>
 
@@ -242,3 +224,4 @@ Expected output :
 **👷🏼‍♂️ Jérémy LAURENS**
 - GitHub: [@JeremyLrs](https://github.com/JeremyLrs)
 - LinkedIn: [@jeremylrs](www.linkedin.com/in/jeremylrs)
+ LinkedIn: [@jeremylrs](www.linkedin.com/in/jeremylrs)
