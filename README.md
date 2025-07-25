@@ -231,7 +231,7 @@ Expected output :
 | `octal_handler.c`()| Function to `print` any given integer in octal.|
 | `hexa_handler.c`()| Function to `print` any given integer in lowercase and uppercase hexadecimal.|
 | `README.md`()| The `README.md` file.|
-| `man_3_printf`()| Manual page of our function `printf`.| 
+| `man_3_printf`()| Manual page of our function `printf`.|
 
 ## 👷🏼‍♂️👷🏼‍♂️ <span id="authors">Authors</span>
 
