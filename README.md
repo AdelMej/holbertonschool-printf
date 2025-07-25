@@ -203,7 +203,7 @@ You can compile the project using the provided `Makefile`.
 
 ### 🔧 Building
 
-Run:
+#### Run:
 ```bash
 make
 ```
