@@ -141,10 +141,10 @@ sudo apt install groff /* To install Groff */
 groff -Tascii -man man_3_printf /* To use manual with groff */
 ```
 
+On linux :
 ```
 man ./man_3_printf
 ```
-
 
 ## ⚙️ <span id="compilation">Compilation</span>
 The code should be compiled like this:
