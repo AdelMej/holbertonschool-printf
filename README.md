@@ -27,13 +27,23 @@ Allocating sufficient memory to hold the formatted string.
 Returning a pointer to the allocated string.
 The standard pipeline then processes the formatted string to apply width, flags, and precision, potentially creating a new string buffer to reflect these modifications.
 
-Important notes:
-
+#### Important notes:
 All dynamically allocated strings are freed after printing to avoid memory leaks.
 Handlers must ensure to return NULL if allocation fails.
 If the input string pointer for a %s-style specifier is NULL, it is safely replaced with the string "(null)" to avoid undefined behavior.
 Undefined or missing arguments for specifiers (e.g., calling %r without an argument) can cause undefined behavior and should be avoided.
 To verify memory safety, valgrind has been used extensively during development, showing no leaks or invalid reads/writes after fixes.
+
+```
+==18645== HEAP SUMMARY:
+==18645==     in use at exit: 0 bytes in 0 blocks
+==18645==   total heap usage: 64 allocs, 64 frees, 1,398 bytes allocated
+==18645==
+==18645== All heap blocks were freed -- no leaks are possible
+==18645==
+==18645== For lists of detected and suppressed errors, rerun with: -s
+==18645== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
 
 ## 🔖 Table of Contents
 
