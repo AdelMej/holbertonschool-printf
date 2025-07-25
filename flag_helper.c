@@ -1,16 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
- * apply_zero - Applies zero padding to the input string if the zero flag is set
- *              and the minus flag is not set, based on the specified width.
- * @fmt: Pointer to the format_specifier_t struct containing flags and width.
- * @str: The input string to which zero padding will be applied.
+ * apply_zero - Applies zero-padding to the formatted string if needed.
+ * @fmt: Pointer to a format_specifier_t struct containing format info.
+ * @str: The string to pad.
  *
- * Return: A newly allocated string with zero padding applied on the left if needed,
- *         or the original string if no padding is required or conditions not met.
- *         Returns NULL if memory allocation fails.
- *
- * Note: The original string is freed if a new padded string is created.
+ * Return: A new string with zero-padding applied, or the original string.
  */
 char *apply_zero(format_specifier_t *fmt, char *str)
 {
@@ -28,39 +24,28 @@ char *apply_zero(format_specifier_t *fmt, char *str)
 	else if (fmt->flags & FLAG_ZERO)
 	{
 		if (str[0] == '+' || str[0] == '-')
-		{
 			prefix_length = 1;
-		}
 		else if (str[0] == '0' &&
-				(str[1] == 'b' ||
-				str[1] == 'x' ||
-				str[1] == 'X'))
-		{
+				(str[1] == 'b' || str[1] == 'x' || str[1] == 'X'))
 			prefix_length = 2;
-		}
 		else if (fmt->specifier == 'o' && str[0] == '0')
-		{
 			prefix_length = 1;
-		}
 
 		padding = fmt->width - size;
 		new_str = malloc(size + padding + 1);
 		if (new_str == NULL)
 			return (NULL);
-		
-		/* copy prefix */
-		for (i = 0; i < prefix_length;i++)
+
+		for (i = 0; i < prefix_length; i++) /* copy prefix */
 			new_str[i] = str[i];
 
-		/* zero padding */
-		for (j = 0; j < padding; j++)
+		for (j = 0; j < padding; j++) /* zero padding */
 			new_str[i + j] = '0';
 
-		/* copy the rest of the string */
-		for (k = 0; str[i + k] != '\0'; k++)
+		for (k = 0; str[i + k] != '\0'; k++) /* copy the rest of the string */
 			new_str[i + j + k] = str[i + k];
 
-		new_str[i + j +k] = '\0';
+		new_str[i + j + k] = '\0';
 		free(str);
 		return (new_str);
 	}
@@ -68,16 +53,12 @@ char *apply_zero(format_specifier_t *fmt, char *str)
 }
 
 /**
- * apply_minus - Applies left-justified padding with spaces to the string if
- *               the minus flag is set and zero flag is not set, based on width.
- * @fmt: Pointer to the format_specifier_t struct containing flags and width.
- * @str: The input string to pad.
+ * apply_minus - Applies left-justification padding if '-' flag is set.
+ * @fmt: Pointer to a format_specifier_t struct containing format info.
+ * @str: The string to pad and left-align.
  *
- * Return: Newly allocated string padded with spaces on the right if needed,
- *         or the original string if no padding is required or conditions not met.
- *         Returns NULL if memory allocation fails.
- *
- * Note: The original string is freed if a new padded string is created.
+ * Return: A newly allocated left-aligned string with spaces padded,
+ *         or the original string if no action is needed.
  */
 char *apply_minus(format_specifier_t *fmt, char *str)
 {
@@ -115,13 +96,12 @@ char *apply_minus(format_specifier_t *fmt, char *str)
 }
 
 /**
- * apply_plus - Prepends a '+' sign to positive decimal integers if the plus flag is set.
- * @fmt: Pointer to the format_specifier_t struct containing flags and specifier.
- * @str: The input string representing the number.
+ * apply_plus - Adds a plus sign to positive integers if '+' flag is set.
+ * @fmt: Pointer to a format_specifier_t struct containing format info.
+ * @str: The string representation of the number to modify.
  *
- * Return: Newly allocated string with '+' prepended if applicable,
- *         or original string if no change needed or malloc fails.
- *         Frees original string if new string is allocated.
+ * Return: A newly allocated string with a '+' prefix if applicable,
+ *         or the original string if not modified.
  */
 char *apply_plus(format_specifier_t *fmt, char *str)
 {
@@ -129,7 +109,8 @@ char *apply_plus(format_specifier_t *fmt, char *str)
 	int size = 0;
 	char *new_str;
 
-	if ((fmt->specifier == 'd' || fmt->specifier == 'i') && fmt->flags & FLAG_PLUS)
+	if ((fmt->specifier == 'd' || fmt->specifier == 'i')
+		&& fmt->flags & FLAG_PLUS)
 	{
 		size = _strlen(str);
 		if (str[0] != '-')
@@ -152,19 +133,20 @@ char *apply_plus(format_specifier_t *fmt, char *str)
 }
 
 /**
- * apply_space - Prepends a space to positive decimal integers if the space flag is set
- *               and the plus flag is not set.
- * @fmt: Pointer to the format_specifier_t struct containing flags and specifier.
- * @str: The input string representing the number.
+ * apply_space - Adds a space before positive integers if the space flag is set
+ *               and the plus flag is not.
+ * @fmt: Pointer to the format_specifier_t struct with flags and specifier.
+ * @str: String representation of the number to modify.
  *
- * Return: Newly allocated string with space prepended if applicable,
- *         or original string if no change is needed or malloc fails.
- *         Frees original string if new string is allocated.
+ * Return: A newly allocated string with space prepended if applicable,
+ *         or the original string if unchanged. Returns NULL on malloc failure.
+ *         Frees original string if a new one is returned.
  */
 char *apply_space(format_specifier_t *fmt, char *str)
 {
 	unsigned int size = 0, i = 0;
 	char *new_str;
+
 	if (str == NULL)
 		return (NULL);
 
@@ -193,14 +175,15 @@ char *apply_space(format_specifier_t *fmt, char *str)
 }
 
 /**
- * apply_hash - Prepends the appropriate prefix for the '#' flag on
- *              octal, hexadecimal, and binary specifiers.
- * @fmt: Pointer to the format_specifier_t struct containing flags and specifier.
- * @str: The input string representing the number.
+ * apply_hash - Applies the '#' flag by prepending the appropriate prefix
+ *              to octal, hexadecimal, or binary values.
+ * @fmt: Pointer to the format_specifier_t
+ * struct containing flags and specifier.
+ * @str: String representing the number to modify.
  *
- * Return: Newly allocated string with prefix prepended if applicable,
- *         or original string if no change is needed or malloc fails.
- *         Frees original string if new string is allocated.
+ * Return: A newly allocated string with the prefix prepended if applicable,
+ *         or the original string if no change is needed or on malloc failure.
+ *         Frees the original string if a new one is returned.
  */
 char *apply_hash(format_specifier_t *fmt, char *str)
 {

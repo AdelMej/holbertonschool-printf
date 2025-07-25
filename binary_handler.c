@@ -19,7 +19,9 @@
  * Return: Pointer to a dynamically allocated string containing the binary
  *         representation of the number, or NULL on failure.
  */
-char *binary_to_string_handler(format_specifier_t *format_specifier, va_list args)
+char *binary_to_string_handler(
+	format_specifier_t *format_specifier,
+	va_list args)
 {
 	if (format_specifier->length[0] == '\0')
 	{

@@ -8,8 +8,8 @@
  *         the null terminator.
  *
  * Description: Returns 2 if number is 0 (one digit plus null terminator),
- *              otherwise returns the number of digits plus one for the
- *              null terminator.
+ *				otherwise returns the number of digits plus one for the
+ *				null terminator.
  */
 unsigned int _sizeofuint(unsigned int number)
 {
@@ -63,7 +63,7 @@ unsigned int _sizeofulong(unsigned long number)
  *                 including space for the null terminator.
  * @number: the unsigned short integer to measure.
  *
- * return: the size (in bytes) required to store the string
+ * Return: the size (in bytes) required to store the string
  *         representation of the number, including the null byte.
  */
 unsigned int _sizeofushort(unsigned short number)

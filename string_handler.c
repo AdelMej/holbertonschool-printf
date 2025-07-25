@@ -3,14 +3,18 @@
 #include <stdio.h>
 
 /**
- * string_cpy - Copies a string from a va_list to a newly allocated string.
- * @args: A va_list containing the string to copy.
+ * string_cpy - Copies a string argument from a va_list.
+ * @format_specifier: Pointer to the format specifier struct (unused).
+ * @args:            Variadic argument list containing the string to copy.
  *
- * Return: Pointer to a newly allocated string copy,
- *         or NULL if memory allocation fails.
+ * Description:
+ *   Retrieves a string argument from the variadic list. If the string is NULL,
+ *   substitutes it with the string "(null)".
+ *   Allocates memory for a copy of the
+ *   string, copies it, and returns the newly allocated copy.
  *
- * Note: If the input string is NULL, "(null)" is copied instead.
- *       The caller is responsible for freeing the returned string.
+ * Return: Pointer to the newly allocated string copy,
+ * or NULL if memory allocation fails.
  */
 char *string_cpy(format_specifier_t *format_specifier, va_list args)
 {

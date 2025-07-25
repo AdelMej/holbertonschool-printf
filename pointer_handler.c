@@ -7,17 +7,18 @@ char *pointer_helper(unsigned long address, char *str);
 void nil_string(char *str);
 
 /**
- * pointer_to_string - converts a pointer argument to its string representation
- * @args: va_list containing the pointer to convert
+ * pointer_to_string - Converts a pointer to a hexadecimal string
+ *                     prefixed with "0x".
+ * @format_specifier: Pointer to format_specifier_t struct (unused).
+ * @args: va_list containing the pointer to convert.
  *
- * This function retrieves a void pointer from the variable argument list,
- * then converts its address to a string in hexadecimal
- * format prefixed with "0x".
- * If the pointer is NULL, it returns a string "(nil)".
- * If the pointer's address is zero, it returns "0x".
+ * Converts the pointer argument to a string representation of its
+ * address in lowercase hexadecimal, prefixed by "0x". If the pointer
+ * is NULL, returns a special nil string. Allocates memory for the
+ * returned string, which must be freed by the caller.
  *
- * Return: pointer to the newly allocated string representing the pointer,
- *         or NULL if memory allocation fails
+ * Return: Pointer to a newly allocated string representing the pointer,
+ *         or NULL if memory allocation fails.
  */
 char *pointer_to_string(format_specifier_t *format_specifier, va_list args)
 {

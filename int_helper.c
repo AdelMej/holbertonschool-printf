@@ -136,6 +136,6 @@ unsigned int _sizeofchar(signed char number)
 
 	size++; /* for null terminator */
 	return (size);
- }
+}
 
 

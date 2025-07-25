@@ -2,7 +2,7 @@
 #include <stdarg.h>
 
 /* Function declarations */
-int _isdigit (char c);
+int _isdigit(char c);
 
 /**
  * width_handler - Parses width and precision from format string
@@ -16,7 +16,8 @@ int _isdigit (char c);
  * Return: Pointer to the next character in the format string after
  * parsing width and precision.
  */
-const char *width_handler(const char *str, format_specifier_t *format, va_list *args)
+const char *width_handler(const char *str,
+						  format_specifier_t *format, va_list *args)
 {
 	if (*str == '*') /* Width specified by argument */
 	{
@@ -59,7 +60,7 @@ const char *width_handler(const char *str, format_specifier_t *format, va_list *
  *
  * Return: 1 if @c is a digit, 0 otherwise
  */
-int _isdigit (char c)
+int _isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

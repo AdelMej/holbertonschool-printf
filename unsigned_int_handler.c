@@ -3,19 +3,17 @@
 #include <stdlib.h>
 
 /**
- * uint_to_string_handler - Selects and calls the correct function to convert
- *                          an unsigned integer to a string based on length modifiers.
- * @format_specifier: Pointer to a format_specifier_t struct with formatting details.
- * @args: A va_list containing the unsigned integer to convert.
+ * uint_to_string_handler - Chooses unsigned int to string conversion function.
+ * @format_specifier: Pointer to format specifier struct with length info.
+ * @args: Variadic argument list containing the number to convert.
  *
- * Return: Pointer to a newly allocated string representing the unsigned integer,
- *         or NULL if memory allocation fails.
+ * Selects the correct unsigned integer conversion function based on
+ * the length modifier in the format specifier.
  *
- * Description: Dispatches to the appropriate conversion function based on the
- *              length modifier ('', 'l', 'll', 'h', 'hh') found in the format specifier.
- *              The returned string must be freed by the caller.
+ * Return: Pointer to a newly allocated string representing the number.
  */
-char *uint_to_string_handler(format_specifier_t *format_specifier, va_list args)
+char *uint_to_string_handler(format_specifier_t *format_specifier,
+							 va_list args)
 {
 	if (format_specifier->length[0] == '\0')
 	{

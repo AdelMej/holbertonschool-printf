@@ -5,17 +5,16 @@
 char *custom_hex_helper(unsigned char str);
 
 /**
- * custom_string_cpy - Copies a string and replaces non-printable characters
- *                     with their hexadecimal codes prefixed by \x
- * @args: va_list containing the string to copy and format
+ * custom_string_cpy - Copies a string from a va_list, converting
+ *                     non-printable characters to their
+ *                     hexadecimal escape sequences.
+ * @format_specifier: Pointer to format_specifier_t (unused).
+ * @args: va_list containing the string to copy.
  *
- * This function takes a string from the argument list, duplicates it into
- * a newly allocated buffer, and replaces non-printable ASCII characters
- * (values < 32 or >= 127) with a four-character escape sequence of the form
- * "\xHH", where "HH" is the uppercase hexadecimal value of the character.
- *
- * Return: Pointer to a newly allocated string with non-printable characters
- *         escaped, or NULL if memory allocation fails
+ * Return: Pointer to a newly allocated string with non-printable
+ *         characters replaced by their '\xHH' hex code representation,
+ *         or NULL if malloc fails.
+ *         The caller is responsible for freeing the returned string.
  */
 char *custom_string_cpy(format_specifier_t *format_specifier, va_list args)
 {

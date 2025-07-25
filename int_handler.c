@@ -30,16 +30,20 @@ char *char_to_string(format_specifier_t *format_specifier, va_list args)
 }
 
 /**
- * int_to_string - Dispatches to the correct integer-to-string function
+ * int_to_string_handler - Dispatches to the correct integer-to-string function
  *                 based on the length modifier in the format specifier.
- * @format_specifier: Pointer to the format specifier struct containing length info
+ * @format_specifier: Pointer to the format specifier
+ *					  struct containing length info
  * @args: va_list containing the integer argument to convert
  *
- * Return: Pointer to a newly allocated string representing the formatted integer,
- *         or NULL if memory allocation fails or an unknown length modifier is used.
+ * Return: Pointer to a newly allocated string
+ *		   representing the formatted integer,
+ *         or NULL if memory allocation fails
+ *         or an unknown length modifier is used.
  *
  * Description: Handles standard length modifiers "", "l", "ll", "h", and "hh",
- * and calls the appropriate conversion function. Falls back to default behavior
+ * and calls the appropriate conversion function.
+ * Falls back to default behavior
  * if no length modifier is present or unrecognized.
  */
 char *int_to_string_handler(format_specifier_t *format_specifier, va_list args)

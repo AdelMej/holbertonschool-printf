@@ -1,17 +1,20 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdarg.h>
+
 /**
- * uint_to_string - Converts an unsigned int from va_list to a string.
- * @args: A va_list containing the unsigned int to convert.
+ * uint_to_string_default - Converts an unsigned int from va_list to a string.
+ * @args: Variadic argument list containing the unsigned int to convert.
  *
- * Return: Pointer to a newly allocated string representing the number,
- *         or NULL if memory allocation fails.
+ * Description:
+ *   Retrieves an unsigned int from the argument list, allocates memory for
+ *   its decimal string representation,
+ *   and converts the number into that string.
+ *   Handles zero as a special case.
  *
- * Description: Allocates sufficient memory to store the string
- *              representation of the unsigned int including the null
- *              terminator. Returns "0" as a string if number is zero.
- *              The caller is responsible for freeing the returned string.
+ * Return:
+ *   Pointer to the newly allocated string representing the unsigned int,
+ *   or NULL if memory allocation fails.
  */
 char *uint_to_string_default(va_list args)
 {
@@ -44,16 +47,18 @@ char *uint_to_string_default(va_list args)
 }
 
 /**
- * uint_to_string - Converts an unsigned int from va_list to a string.
- * @args: A va_list containing the unsigned int to convert.
+ * uint_to_string_l - Converts an unsigned long from va_list to a string.
+ * @args: Variadic argument list containing the unsigned long to convert.
  *
- * Return: Pointer to a newly allocated string representing the number,
- *         or NULL if memory allocation fails.
+ * Description:
+ *   Retrieves an unsigned long from the argument list, allocates memory for
+ *   its decimal string representation,
+ *   and converts the number into that string.
+ *   Handles zero as a special case.
  *
- * Description: Allocates sufficient memory to store the string
- *              representation of the unsigned int including the null
- *              terminator. Returns "0" as a string if number is zero.
- *              The caller is responsible for freeing the returned string.
+ * Return:
+ *   Pointer to the newly allocated string representing the unsigned long,
+ *   or NULL if memory allocation fails.
  */
 char *uint_to_string_l(va_list args)
 {

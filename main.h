@@ -34,7 +34,7 @@ typedef struct format_specifier format_specifier_t;
 /**
  * struct format_factory - Maps a format specifier to a print function
  * @specifier: The format specifier character (e.g., 'd', 's').
- * @print: Function pointer for printing that specifier.
+ * @handler: Function pointer for printing that specifier.
  */
 struct format_factory
 {
@@ -56,7 +56,9 @@ print_func_t get_print_function(char specifier);
 char *format_handler(format_specifier_t *format_specifier, va_list args);
 const char *flag_handler(const char *format_ptr, format_specifier_t *info);
 void init_format_info(format_specifier_t *info);
-const char *width_handler(const char *str, format_specifier_t *format, va_list *args);
+const char *width_handler(const char *str,
+						  format_specifier_t *format,
+						  va_list *args);
 const char *length_handler(const char *str, format_specifier_t *format);
 
 /* --- Printing functions --- */
@@ -69,28 +71,32 @@ char *reversed_string_handler(format_specifier_t *fmt, va_list args);
 
 /* Numbers */
 /* --- int to string --- */
-char *int_to_string_handler(format_specifier_t *format_specifier, va_list args);
+char *int_to_string_handler(format_specifier_t *format_specifier,
+							va_list args);
 char *int_to_string_default(va_list args);
 char *int_to_string_l(va_list args);
 char *int_to_string_h(va_list args);
 char *int_to_string_hh(va_list args);
 
 /* --- unsigned int to string --- */
-char *uint_to_string_handler(format_specifier_t *format_specifier, va_list args);
+char *uint_to_string_handler(format_specifier_t *format_specifier,
+							 va_list args);
 char *uint_to_string_default(va_list args);
 char *uint_to_string_l(va_list args);
 char *uint_to_string_h(va_list args);
 char *uint_to_string_hh(va_list args);
 
 /* --- binary to string --- */
-char *binary_to_string_handler(format_specifier_t *format_specifier, va_list args);
+char *binary_to_string_handler(format_specifier_t *format_specifier,
+							   va_list args);
 char *binary_to_string_default(va_list args);
 char *binary_to_string_l(va_list args);
 char *binary_to_string_h(va_list args);
 char *binary_to_string_hh(va_list args);
 
 /* --- octal to string --- */
-char *octal_to_string_handler(format_specifier_t *format_specifier, va_list args);
+char *octal_to_string_handler(format_specifier_t *format_specifier,
+							  va_list args);
 char *octal_to_string_default(va_list args);
 char *octal_to_string_l(va_list args);
 char *octal_to_string_h(va_list args);
@@ -98,24 +104,28 @@ char *octal_to_string_hh(va_list args);
 
 /* --- hexa to string --- */
 /* --- hexa upper --- */
-char *hexa_upper_to_string_handler(format_specifier_t *format_specifier, va_list args);
+char *hexa_upper_to_string_handler(format_specifier_t *format_specifier,
+								   va_list args);
 char *hexa_upper_to_string_default(va_list args);
 char *hexa_upper_to_string_l(va_list args);
 char *hexa_upper_to_string_h(va_list args);
 char *hexa_upper_to_string_hh(va_list args);
 
 /* --- hexa lower --- */
-char *hexa_lower_to_string_handler(format_specifier_t *format_specifier, va_list args);
+char *hexa_lower_to_string_handler(format_specifier_t *format_specifier,
+								   va_list args);
 char *hexa_lower_to_string_default(va_list args);
 char *hexa_lower_to_string_l(va_list args);
 char *hexa_lower_to_string_h(va_list args);
 char *hexa_lower_to_string_hh(va_list args);
 
 /* --- pointer to string --- */
-char *pointer_to_string(format_specifier_t *format_specifier, va_list args);
+char *pointer_to_string(format_specifier_t *format_specifier,
+						va_list args);
 
 /* --- Helper --- */
-char *convert_base(unsigned int number, char *str, int base, const char *values);
+char *convert_base(unsigned int number,
+				   char *str, int base, const char *values);
 
 /* --- int helpers --- */
 unsigned int _sizeofint(int number);

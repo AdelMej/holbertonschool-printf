@@ -15,7 +15,9 @@
  *
  * Return: Pointer to the next available position in the buffer
  */
-char *convert_base(unsigned int number, char *str, int base, const char *values)
+char *convert_base(unsigned int number,
+				   char *str, int base,
+				   const char *values)
 {
 	if (number == 0)
 		return (str);

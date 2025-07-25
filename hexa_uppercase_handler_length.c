@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
- * hexa_upper_to_string_default - Converts an unsigned int to uppercase hexadecimal string.
+ * hexa_upper_to_string_default - Converts an unsigned int to uppercase
+ *								  hexadecimal string.
  * @args: A va_list containing the unsigned int to convert.
  *
  * Return: Pointer to a newly allocated string representing the uppercase
@@ -10,7 +11,8 @@
  *
  * Description: If the number is zero, returns the string "0".
  *              Otherwise, calculates the required string size,
- *              allocates memory, and fills it using convert_base with uppercase hex digits.
+ *              allocates memory, and fills it using convert_base
+ *              with uppercase hex digits.
  *              The caller is responsible for freeing the returned string.
  */
 char *hexa_upper_to_string_default(va_list args)
@@ -48,6 +50,18 @@ char *hexa_upper_to_string_default(va_list args)
 	return (str);
 }
 
+/**
+ * hexa_upper_to_string_l - Converts an unsigned long integer to an uppercase
+ *                         hexadecimal string.
+ * @args: va_list containing the unsigned long integer to convert.
+ *
+ * Extracts an unsigned long from args and converts it to a string
+ * representation in uppercase hexadecimal. Returns a pointer to
+ * a newly allocated string or NULL if allocation fails.
+ *
+ * Return: Pointer to dynamically allocated uppercase hex string,
+ *         or NULL on failure.
+ */
 char *hexa_upper_to_string_l(va_list args)
 {
 	unsigned long number, temp;

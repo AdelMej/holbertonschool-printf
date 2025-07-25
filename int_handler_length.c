@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdarg.h>
+
 /**
  * int_to_string_default - Converts an int argument from va_list
  *                        to its string representation.
@@ -32,7 +33,7 @@ char *int_to_string_default(va_list args)
 		str[1] = '\0';
 		return (str);
 	}
-	
+
 	str[size - 1] = '\0';
 	if (number < 0)
 	{
@@ -84,7 +85,7 @@ char *int_to_string_l(va_list args)
 		str[1] = '\0';
 		return (str);
 	}
-	
+
 	str[size - 1] = '\0';
 	if (number < 0)
 	{
@@ -135,7 +136,7 @@ char *int_to_string_h(va_list args)
 		str[1] = '\0';
 		return (str);
 	}
-	
+
 	str[size - 1] = '\0';
 	if (number < 0)
 	{
@@ -186,7 +187,7 @@ char *int_to_string_hh(va_list args)
 		str[1] = '\0';
 		return (str);
 	}
-	
+
 	str[size - 1] = '\0';
 	if (number < 0)
 	{

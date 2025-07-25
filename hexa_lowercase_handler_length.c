@@ -1,17 +1,15 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdarg.h>
+
 /**
- * hexa_upper_to_string_default - Converts an unsigned int to lowercase hexadecimal string.
- * @args: A va_list containing the unsigned int to convert.
+ * hexa_lower_to_string_default - Converts an unsigned int to a lowercase
+ *                                hexadecimal string.
+ * @args: va_list containing the unsigned int to convert.
  *
- * Return: Pointer to a newly allocated string representing the lowercase
- *         hexadecimal form of the number, or NULL if memory allocation fails.
- *
- * Description: If the number is zero, returns the string "0".
- *              Otherwise, calculates the required string size,
- *              allocates memory, and fills it using convert_base with lowercase hex digits.
- *              The caller is responsible for freeing the returned string.
+ * Return: Pointer to a dynamically allocated string representing the number
+ *         in lowercase hexadecimal format, or NULL on failure.
+ *         The caller is responsible for freeing the returned string.
  */
 char *hexa_lower_to_string_default(va_list args)
 {
@@ -48,6 +46,15 @@ char *hexa_lower_to_string_default(va_list args)
 	return (str);
 }
 
+/**
+ * hexa_lower_to_string_l - Converts an unsigned long to a lowercase
+ *                          hexadecimal string.
+ * @args: va_list containing the unsigned long to convert.
+ *
+ * Return: Pointer to a dynamically allocated string representing the number
+ *         in lowercase hexadecimal format, or NULL on failure.
+ *         The caller is responsible for freeing the returned string.
+ */
 char *hexa_lower_to_string_l(va_list args)
 {
 	unsigned long number, temp;
@@ -84,15 +91,13 @@ char *hexa_lower_to_string_l(va_list args)
 }
 
 /**
- * hexa_upper_to_string_h - Converts an unsigned short to lowercase hex string.
+ * hexa_lower_to_string_h - Converts an unsigned short to a lowercase
+ *                          hexadecimal string.
  * @args: va_list containing the unsigned short (promoted to unsigned int).
  *
- * Return: Pointer to a newly allocated string containing the lowercase
- *         hexadecimal representation of the number, or NULL if malloc fails.
- *
- * Description: Retrieves the unsigned short from the va_list, converts it to
- *              lowercase hexadecimal string. Returns "0" if number is zero.
- *              Caller must free the returned string.
+ * Return: Pointer to a dynamically allocated string representing the number
+ *         in lowercase hexadecimal format, or NULL on failure.
+ *         The caller is responsible for freeing the returned string.
  */
 char *hexa_lower_to_string_h(va_list args)
 {
@@ -130,15 +135,13 @@ char *hexa_lower_to_string_h(va_list args)
 }
 
 /**
- * hexa_upper_to_string_hh - Converts an unsigned char to lowercase hex string.
+ * hexa_lower_to_string_hh - Converts an unsigned char to a lowercase
+ *                           hexadecimal string.
  * @args: va_list containing the unsigned char (promoted to unsigned int).
  *
- * Return: Pointer to a newly allocated string containing the lowercase
- *         hexadecimal representation of the number, or NULL if malloc fails.
- *
- * Description: Retrieves the unsigned char from the va_list, converts it to
- *              lowercase hexadecimal string. Returns "0" if number is zero.
- *              Caller must free the returned string.
+ * Return: Pointer to a dynamically allocated string representing the number
+ *         in lowercase hexadecimal format, or NULL on failure.
+ *         The caller is responsible for freeing the returned string.
  */
 char *hexa_lower_to_string_hh(va_list args)
 {
