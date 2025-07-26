@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
-* get_print_function - a function that returns a pointer to
+* get_handler_function - a function that returns a pointer to
 * a function that returns an int and takes a va_list in parameter
 *
 * @specifier: the specifier to test
 * Return: the function pointer on success
 * NULL on fail
 */
-handler_func_t get_print_function(char specifier)
+handler_func_t get_handler_function(char specifier)
 {
 	unsigned int i;
 

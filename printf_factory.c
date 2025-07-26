@@ -107,7 +107,7 @@ char *format_handler(format_specifier_t *specifiers_format, va_list args)
 	}
 
 	/* getting the correct function for the specifier */
-	function = get_print_function(specifiers_format->specifier);
+	function = get_handler_function(specifiers_format->specifier);
 	if (function == NULL) /* skipping unknown specifier */
 	{
 		str = malloc(3);
