@@ -359,7 +359,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 | **File** | **Description** |
 |------|-------------|
 | [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h) | Main header file: includes libraries, macros, structures, and all function prototypes. |
-| [`standard_pipeline_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline_handler.c) | Coordinates the formatting process by invoking the correct handler functions. |
+| [`standard_pipeline_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_piepeline_handler.c) | Standard pipeline handling width, precision and flags (`0`, ` `, `#`, `+`, `-`) |
 | [`putchar_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/putchar_helper.c) | Custom `_putchar` implementation and output buffering. |
 | [`string_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_helper.c) | Utility functions for string manipulation (e.g., reverse, copy, length). |
 | [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c) | Converts integers to string representations in various bases. |
