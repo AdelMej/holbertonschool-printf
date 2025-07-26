@@ -305,9 +305,9 @@ Expected output:
 $: Toto is 18 years old.
 ```
 
-### 🔹Implementation Notes
-- Explored using a hash map to optimize handler lookups, but project constraints (disallowing `sizeof`) made it impractical to implement reliably.
-- Chose a straightforward and maintainable array-based factory approach instead, ensuring clarity and compliance with project rules.
+### 🔹 Note on Hash Maps:
+I initially planned to use a hash map for handler lookup to optimize performance. However, due to project constraints forbidding the use of sizeof, implementing a proper hash map became impractical. So, I stuck with the array-based factory approach for clean, maintainable, and compliant code. Still, I learned a lot about hash maps and look forward to using them in future projects!
+
 ## ➕ Adding a New Specifier
 
 To extend `_printf` with a new format specifier, follow these steps:
