@@ -54,7 +54,7 @@ This project is organized around a modular architecture, where the behavior of `
    - Delegates formatting logic to `format_handler()`.
 
 2. **Specifier Dispatch — `format_handler()`**
-   - Retrieves the correct handler function from the `factory` using the specifier.
+   - Retrieves the correct handler function from the `get_handler_function` using the specifier.
    - Calls the handler, passing the specifier struct and variadic arguments.
 
 3. **Specifier Handler — e.g. `string_handler()`, `binary_handler()`**
