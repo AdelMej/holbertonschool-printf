@@ -305,7 +305,7 @@ Expected output:
 $: Toto is 18 years old.
 ```
 
-### Implementation Notes
+### 🔹Implementation Notes
 - Explored using a hash map to optimize handler lookups, but project constraints (disallowing `sizeof`) made it impractical to implement reliably.
 - Chose a straightforward and maintainable array-based factory approach instead, ensuring clarity and compliance with project rules.
 ## ➕ Adding a New Specifier
