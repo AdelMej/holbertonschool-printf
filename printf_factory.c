@@ -91,7 +91,7 @@ int _printf(const char *format, ...)
  */
 char *format_handler(format_specifier_t *specifiers_format, va_list args)
 {
-	print_func_t function;
+	handler_func_t function;
 	char specifier = specifiers_format->specifier;
 	char *str;
 

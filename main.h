@@ -11,6 +11,7 @@
 #define FLAG_HASH   (1 << 4) /* '#' flag: alternate form */
 
 
+typedef char *(*handler_func_t)(format_specifier_t *, va_list);
 
 /**
  * struct format_specifier - Holds formatting flags and options
@@ -31,20 +32,32 @@ struct format_specifier
 
 typedef struct format_specifier format_specifier_t;
 
+#define HASH_SIZE 32 /* number of bucket for the hash map */
+
 /**
- * struct format_factory - Maps a format specifier to a print function
- * @specifier: The format specifier character (e.g., 'd', 's').
- * @handler: Function pointer for printing that specifier.
+ * struct hash_node - Node for chaining in the hash map
+ * @key: The format specifier character (e.g. 'd', 's', 'X')
+ * @handler: Function pointer associated with the specifier
+ * @next: Pointer to the next node in the bucket (for collisions)
  */
-struct format_factory
-{
-	char specifier;
-	char *(*handler)(format_specifier_t *, va_list);
+struct hash_node {
+	char key;
+	handler_func_t handler;
+	struct hash_node *next;
 };
 
-typedef struct format_factory factory_t;
+typedef struct hash_node hash_node_t;
 
-typedef char *(*print_func_t)(format_specifier_t *, va_list);
+/**
+ * struct hash_map_t - Hash map container for format specifier handlers
+ * @buckets: Array of pointers to linked lists (buckets) holding hash nodes.
+ *
+ * Each bucket stores entries for format specifiers that hash to that index.
+ * Used for fast lookup of print handler functions by specifier character.
+ */
+typedef struct {
+	hash_node_t *buckets[HASH_SIZE];
+} hash_map_t;
 
 /* --- Core printf interface --- */
 int _printf(const char *format, ...);
@@ -52,7 +65,7 @@ int _putchar(char c);
 void _putchar_flush(void);
 
 /* --- Format handler helpers --- */
-print_func_t get_print_function(char specifier);
+handler_func_t get_handler(char specifier);
 char *format_handler(format_specifier_t *format_specifier, va_list args);
 const char *flag_handler(const char *format_ptr, format_specifier_t *info);
 void init_format_info(format_specifier_t *info);
@@ -63,9 +76,9 @@ const char *length_handler(const char *str, format_specifier_t *format);
 
 /* --- Printing functions --- */
 /* Characters and strings */
-char *char_to_string(format_specifier_t *format_specifier, va_list args);
-char *string_cpy(format_specifier_t *format_specifier, va_list args);
-char *custom_string_cpy(format_specifier_t *format_specifier, va_list args);
+char *char_handler(format_specifier_t *format_specifier, va_list args);
+char *string_handler(format_specifier_t *format_specifier, va_list args);
+char *custom_string_handler(format_specifier_t *format_specifier, va_list args);
 char *reversed_string_handler(format_specifier_t *fmt, va_list args);
 char *rot13_string_handler(format_specifier_t *fmt, va_list args);
 
@@ -124,7 +137,7 @@ char *hexa_lower_to_string_h(va_list args);
 char *hexa_lower_to_string_hh(va_list args);
 
 /* --- pointer to string --- */
-char *pointer_to_string(format_specifier_t *format_specifier,
+char *pointer_handler(format_specifier_t *format_specifier,
 						va_list args);
 
 /* --- Helper --- */
@@ -155,5 +168,10 @@ char *apply_minus(format_specifier_t *fmt, char *str);
 char *apply_plus(format_specifier_t *fmt, char *str);
 char *apply_space(format_specifier_t *fmt, char *str);
 char *apply_hash(format_specifier_t *fmt, char *str);
+
+/* --- Hash map --- */
+void init_format_map(hash_map_t *map);
+handler_func_t get_handler(hash_map_t *map,const char key);
+void register_handler(hash_map_t *map, const char key, handler_func_t handler);
 
 #endif /* MY_PRINTF_MAIN_H */
