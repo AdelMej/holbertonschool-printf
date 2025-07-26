@@ -1,11 +1,10 @@
-.TH PRINTF_FACTORY 1 "2025-07-25" "Custom printf implementation"
+.TH PRINTF_FACTORY 3 "July 25, 2025" "Custom printf implementation"
 
 .SH NAME
 printf_factory \- modular and extensible printf clone
 
 .SH SYNOPSIS
-.B printf_factory
-\fIFORMAT_STRING\fR, \fIVARIABLE_ARGUMENTS\fR
+.B int printf_factory(const char *format, ...);
 
 .SH DESCRIPTION
 \fBprintf_factory\fR is a custom implementation of the C
@@ -51,10 +50,15 @@ Supports additional custom format specifiers:
 .SH MEMORY MANAGEMENT
 Handler functions return freshly allocated strings which are then processed through
 a standard pipeline to apply width, flags, and precision before output.
+The caller is responsible for freeing any dynamically allocated memory.
 
 .SH EXTENSIBILITY
 New specifiers can be added easily by extending the handler functions and updating
-the dispatch mechanism.
+the dispatch mechanism in the factory.
+
+.SH RETURN VALUE
+On success, returns the total number of characters printed.
+Returns -1 if an error occurs during processing.
 
 .SH AUTHOR
 Adel Mejrissi, Jeremy Laurens
