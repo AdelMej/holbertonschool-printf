@@ -352,7 +352,6 @@ This modular approach allows _printf to be easily extended without modifying cor
 
 | **File** | **Description** |
 |------|-------------|
-| [`main.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.c) | Entry point for the custom `_printf` function. |
 | [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h) | Header file containing standard libraries, macros, structures, and function prototypes. |
 | [`standard_pipeline_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline_handler.c) | Coordinates the main formatting pipeline (flag, width, precision, length, specifier). |
 | [`putchar_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/putchar_helper.c) | Contains a custom `_putchar` function for output handling. |
