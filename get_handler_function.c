@@ -14,7 +14,7 @@ handler_func_t get_handler_function(char specifier)
 	unsigned int i;
 
 	static factory_t factory[] = {
-		{'c', char_to_string},
+		{'c', char_to_string_handler},
 		{'d', int_to_string_handler},
 		{'i', int_to_string_handler},
 		{'s', string_handler},

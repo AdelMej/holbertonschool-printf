@@ -65,7 +65,8 @@ const char *length_handler(const char *str, format_specifier_t *format);
 
 /* --- Printing functions --- */
 /* Characters and strings */
-char *char_handler(format_specifier_t *format_specifier, va_list args);
+char *char_to_string_handler(format_specifier_t *format_specifier,
+							 va_list args);
 char *string_handler(format_specifier_t *format_specifier,
 					 va_list args);
 char *custom_string_handler(format_specifier_t *format_specifier,
