@@ -306,11 +306,8 @@ $: Toto is 18 years old.
 ```
 
 ### Implementation Notes
-- Initially planned to implement a hash map for format specifier handlers for faster lookups.
-
-- Due to project constraints disallowing sizeof, implementing a reliable hash map proved unfeasible.
-
-- Opted for a clean and maintainable array-based factory pattern instead, ensuring robust and clear code.
+- Explored using a hash map to optimize handler lookups, but project constraints (disallowing `sizeof`) made it impractical to implement reliably.
+- Chose a straightforward and maintainable array-based factory approach instead, ensuring clarity and compliance with project rules.
 ## ➕ Adding a New Specifier
 
 To extend `_printf` with a new format specifier, follow these steps:
