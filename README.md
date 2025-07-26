@@ -350,7 +350,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 
 ### 📁 File Description
 
-| File | Description |
+| **File** | **Description** |
 |------|-------------|
 | [`main.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.c) | Entry point for the custom `_printf` function. |
 | [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h) | Header file containing standard libraries, macros, structures, and function prototypes. |
