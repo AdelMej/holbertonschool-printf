@@ -357,6 +357,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 | [`width_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/width_handler.c) | Handles width specifications and padding logic. |
 | [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c) | Manages precision specifiers for numbers and strings. |
 | [`length_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/length_handler.c) | Parses and interprets length modifiers (`l`, `h`, etc.). |
+| [`char_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/char_handler.c) | Handles char (`c`) formatting. |
 | [`int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler.c) | Handles signed integer (`d`, `i`) formatting. |
 | [`int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler_length.c) | Handles length-modified signed integers. |
 | [`int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_helper.c) | Utility functions for signed integer formatting. |
