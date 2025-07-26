@@ -170,16 +170,17 @@ flowchart TD
     I --> J["Set specifier"]
 
     J --> K{"Find handler in factory?"}
-    K -->|No| Z1["Return -1 (error)"]
-    K -->|Yes| L["Call handler function"]
+    K -->|No| L["Print '%' and specifier literally"]
+    L --> E
+    K -->|Yes| M["Call handler function"]
 
-    L --> M["Receive formatted string"]
-    M --> N["Apply width, precision, flags"]
-    N --> O{"String is NULL?"}
-    O -->|Yes| Z1
-    O -->|No| P["Print with _putchar"]
-    P --> Q["Free result"]
-    Q --> B
+    M --> N["Receive formatted string"]
+    N --> O["Apply width, precision, flags"]
+    O --> P{"String is NULL?"}
+    P -->|Yes| Q["Return -1 (error)"]
+    P -->|No| R["Print with _putchar"]
+    R --> S["Free result"]
+    S --> B
 
     %% Node styling
     classDef start fill:#e0f7fa,stroke:#00796b,stroke-width:2px;
@@ -190,11 +191,10 @@ flowchart TD
 
     %% Assign styles to nodes
     class A start;
-    class B,C,K,O decision;
-    class D,E,F,G,H,I,J,L,M,N,P,Q action;
+    class B,C,K,P decision;
+    class D,E,F,G,H,I,J,L,M,N,O,R,S action;
     class Z endnode;
-    class Z1 errornode;
-
+    class Q errornode;
 ```
 ##  🏗️ <span id="instalation">Instalation</span>
 To install, you need to clone the repository as follows:
