@@ -10,7 +10,7 @@
 ```
 
 
-# `printf_factory` — Modular and Extensible printf Implementation
+# 🏭 `printf_factory` — Modular and Extensible printf Implementation
 ## 📝 Overview
 
 `_printf` is a custom implementation of the standard C `printf` function. It replicates much of its core functionality while supporting modular, scalable, and maintainable extensions.
