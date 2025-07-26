@@ -59,7 +59,7 @@ This project is organized around a modular architecture, where the behavior of `
 
 3. **Specifier Handler — e.g. `string_handler()`, `binary_handler()`**
    - Produces a dynamically allocated string with the formatted result.
-   - May use helper utilities such as `_strdup`, `_itoa`, `_strlen`, etc.
+   - May use helper utilities such as `_strdup`, `_strlen`, etc.
 
 4. **Output — `_putchar()`**
    - Prints the final string to STDOUT and returns the number of printed characters.
@@ -73,7 +73,7 @@ For example, the `%r` (reverse string) handler will:
 - Reverse the input string manually.
 - Return a new string to print.
 
-This design allows new specifiers to be added with minimal coupling, just by registering them in `factory` and defining a handler function.
+This design allows new specifiers to be added with minimal coupling, just by registering them in `get_handler_function` and defining a handler function.
 
 ## 🧼 Memory Management
 
@@ -313,7 +313,7 @@ To extend `_printf` with a new format specifier, follow these steps:
    Implement a function that accepts the format specifier data and variadic arguments, processes them, and returns a dynamically allocated formatted string.
 
 2. **Register the handler in the factory**  
-   Add an entry in the specifier-to-handler mapping (in `get_print_function`) linking your new specifier character to your handler function.
+   Add an entry in the specifier-to-handler mapping (in `get_handler_function`) linking your new specifier character to your handler function.
 
 3. **Update parsing logic (if necessary)**  
    If your specifier requires additional metadata (flags, width, precision), update the format specifier parsing to capture this.
@@ -357,7 +357,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 | [`standard_pipeline.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline.c)| Functions to apply width, flags and precision|
 | [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c)| Functions to deal with flags |
 | [`flag_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_helper.c)| Provides helper functions for flag_handler|
-| [`get_print_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_print_function.c)| Function that returns a pointer to a function handler.|
+| [`get_handler_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_handler_function.c)| Function that returns a pointer to a function handler.|
 | [`hexa_lowercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler.c)| Convert unsigned int in lowercase hexadecimal depending on length (long,short,unsigned char)|
 | [`hexa_lowercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler_length.c)|Provides helper functions for dealing with length to hexa_lowercase_handler|
 | [`hexa_uppercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler.c)| Convert unsigned int in uppercase hexadecimal depending on length (long,short,unsigned char)|
