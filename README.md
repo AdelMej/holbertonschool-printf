@@ -345,41 +345,41 @@ This modular approach allows _printf to be easily extended without modifying cor
 
 | **File** | **Description** |
 |------|-------------|
-| [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h) | Header file containing standard libraries, macros, structures, and function prototypes. |
-| [`standard_pipeline_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline_handler.c) | Coordinates the main formatting pipeline (flag, width, precision, length, specifier). |
-| [`putchar_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/putchar_helper.c) | Contains a custom `_putchar` function for output handling. |
-| [`string_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_helper.c) | Utility functions for string operations (e.g., reversal, length, copying). |
-| [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c) | Functions to convert numbers between decimal, binary, octal, and hexadecimal formats. |
-| [`printf_factory.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/printf_factory.c) | Maps format specifiers to their corresponding handler functions. |
-| [`get_handler_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_handler_function.c) | Retrieves the appropriate handler function based on the specifier. |
-| [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c) | Processes flag characters (`+`, `-`, `#`, ` `, `0`) in format strings. |
-| [`flag_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_helper.c) | Helper functions for flag interpretation and priority handling. |
-| [`width_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/width_handler.c) | Handles width specifications and padding logic. |
-| [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c) | Manages precision specifiers for numbers and strings. |
-| [`length_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/length_handler.c) | Parses and interprets length modifiers (`l`, `h`, etc.). |
-| [`char_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/char_handler.c) | Handles char (`c`) formatting. |
-| [`int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler.c) | Handles signed integer (`d`, `i`) formatting. |
-| [`int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler_length.c) | Handles length-modified signed integers. |
-| [`int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_helper.c) | Utility functions for signed integer formatting. |
-| [`unsigned_int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler.c) | Handles unsigned integer (`u`) formatting. |
-| [`unsigned_int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler_length.c) | Handles length-modified unsigned integers. |
-| [`unsigned_int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_helper.c) | Utility functions for unsigned integer formatting. |
-| [`binary_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler.c) | Handles binary (`b`) number conversion. |
-| [`binary_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler_length.c) | Handles length-modified binary conversions. |
-| [`octal_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler.c) | Handles octal (`o`) number formatting. |
-| [`octal_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler_length.c) | Handles length-modified octal conversions. |
-| [`hexa_lowercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler.c) | Handles lowercase hexadecimal (`x`) formatting. |
-| [`hexa_lowercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler_length.c) | Handles length-modified lowercase hex formatting. |
-| [`hexa_uppercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler.c) | Handles uppercase hexadecimal (`X`) formatting. |
-| [`hexa_uppercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler_length.c) | Handles length-modified uppercase hex formatting. |
-| [`string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_handler.c) | Handles standard string (`s`) output. |
-| [`custom_handler_string.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/custom_handler_string.c) | Handles custom string format (`S`), printing non-printable characters as hex. |
-| [`reversed_string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/reversed_string_handler.c) | Handles string reversal (`r`). |
-| [`rot13_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/rot13_handler.c) | Applies ROT13 encoding to strings (`R`). |
-| [`pointer_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/pointer_handler.c) | Handles pointer (`p`) address formatting. |
-| [`README.md`](https://github.com/AdelMej/holbertonschool-printf/blob/main/README.md) | This documentation file. |
+| [`main.h`](https://github.com/AdelMej/holbertonschool-printf/blob/main/main.h) | Main header file: includes libraries, macros, structures, and all function prototypes. |
+| [`standard_pipeline_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/standard_pipeline_handler.c) | Coordinates the formatting process by invoking the correct parsing and handler functions. |
+| [`putchar_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/putchar_helper.c) | Custom `_putchar` implementation and output buffering. |
+| [`string_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_helper.c) | Utility functions for string manipulation (e.g., reverse, copy, length). |
+| [`convert_base.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/convert_base.c) | Converts integers to string representations in various bases. |
+| [`printf_factory.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/printf_factory.c) | Initializes and links format specifiers to their corresponding handler functions. |
+| [`get_handler_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_handler_function.c) | Looks up the appropriate handler function for a given specifier. |
+| [`parsing_flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_flag_handler.c) | Extracts and stores formatting flags (`+`, `-`, `#`, space, `0`) from the format string. |
+| [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c) | Provides logic for interpreting and prioritizing active flags. |
+| [`parsing_width_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_width_handler.c) | Extracts width values from the format string or argument list. |
+| [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c) | Extracts and interprets precision values for formatting numbers and strings. |
+| [`parsing_length_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_length_handler.c) | Extracts length modifiers (`l`, `h`, etc.) from the format string. |
+| [`char_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/char_handler.c) | Handles character output using `%c`. |
+| [`int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler.c) | Handles signed integer formatting with `%d` and `%i`. |
+| [`int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler_length.c) | Handles signed integers with length modifiers. |
+| [`int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_helper.c) | Provides helper logic for signed integer conversion and formatting. |
+| [`unsigned_int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler.c) | Handles unsigned integer formatting with `%u`. |
+| [`unsigned_int_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_handler_length.c) | Handles unsigned integers with length modifiers. |
+| [`unsigned_int_helper.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/unsigned_int_helper.c) | Helper functions for unsigned integer formatting and conversion. |
+| [`binary_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler.c) | Formats integers as binary strings using `%b`. |
+| [`binary_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/binary_handler_length.c) | Handles length-modified binary formatting. |
+| [`octal_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler.c) | Formats integers as octal using `%o`. |
+| [`octal_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/octal_handler_length.c) | Handles octal formatting with length modifiers. |
+| [`hexa_lowercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler.c) | Formats integers as lowercase hexadecimal using `%x`. |
+| [`hexa_lowercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_lowercase_handler_length.c) | Handles length-modified lowercase hexadecimal formatting. |
+| [`hexa_uppercase_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler.c) | Formats integers as uppercase hexadecimal using `%X`. |
+| [`hexa_uppercase_handler_length.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/hexa_uppercase_handler_length.c) | Handles length-modified uppercase hexadecimal formatting. |
+| [`string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/string_handler.c) | Handles standard string output using `%s`. |
+| [`custom_handler_string.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/custom_handler_string.c) | Handles `%S` for custom string output (non-printable chars in hex). |
+| [`reversed_string_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/reversed_string_handler.c) | Reverses strings for `%r` specifier. |
+| [`rot13_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/rot13_handler.c) | Encodes strings using ROT13 for `%R` specifier. |
+| [`pointer_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/pointer_handler.c) | Formats memory addresses using `%p`. |
+| [`README.md`](https://github.com/AdelMej/holbertonschool-printf/blob/main/README.md) | Project documentation and usage instructions. |
 | [`man_3_printf`](https://github.com/AdelMej/holbertonschool-printf/blob/main/man_3_printf) | Manual page for the custom `_printf` function. |
-| [`Makefile`](https://github.com/AdelMej/holbertonschool-printf/blob/main/Makefile) | Automates compilation of the program. |
+| [`Makefile`](https://github.com/AdelMej/holbertonschool-printf/blob/main/Makefile) | Automates building, cleaning, and compiling the project. |
 
 ## 👷🏼‍♂️👷🏼‍♂️ <span id="authors">Authors</span>
 
