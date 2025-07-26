@@ -156,31 +156,44 @@ config:
   layout: dagre
 ---
 flowchart TD
-    A["Start"] --> B("_printf call")
-    B --> D{"Is string null"}
-    D -- no --> E{"Did we cross the null terminator"}
-    E -- no --> F{"Did we cross a %"}
-    F -- no --> G["Write the character"]
-    D -- yes --> H["Return error"]
-    E -- yes --> I["Return success"]
-    F -- yes --> J{"Did we find a specifier"}
-    J -- yes --> K["Print result"]
-    G -- looping --> E
-    O["Skip next character"] -- looping --> E
-    J -- no --> P["Print the specifier"]
-    P --> O
-    K --> O
-    style A fill:#FFD600,stroke:#FFD600,color:#000000
-    style D fill:#FFCDD2,stroke:#FFCDD2,color:#000000
-    style E fill:#FFCDD2,stroke:#FFCDD2,color:#000000
-    style F fill:#FFCDD2,stroke:#FFCDD2,color:#000000
-    style G fill:#BBDEFB,stroke:#BBDEFB,color:#000000
-    style H fill:#D50000,stroke:#D50000,color:#000000
-    style I fill:#D50000,stroke:#D50000,color:#000000
-    style J fill:#FFCDD2,stroke:#FFCDD2,color:#000000
-    style K fill:#BBDEFB,stroke:#BBDEFB,color:#000000
-    style O fill:#BBDEFB,stroke:#BBDEFB,color:#000000
-    style P fill:#BBDEFB,stroke:#BBDEFB,color:#000000
+    A["Start: _printf"] --> B{"More characters in format?"}
+    B -->|No| Z["Flush buffer and return length"]
+    B -->|Yes| C{"Character is '%'?"}
+    C -->|No| D["_putchar(char)"]
+    D --> E["Increment length"]
+    E --> B
+
+    C -->|Yes| F["Advance pointer and init struct"]
+    F --> G["Parse flags"]
+    G --> H["Parse width"]
+    H --> I["Parse length"]
+    I --> J["Set specifier"]
+
+    J --> K{"Find handler in factory?"}
+    K -->|No| Z1["Return -1 (error)"]
+    K -->|Yes| L["Call handler function"]
+
+    L --> M["Receive formatted string"]
+    M --> N["Apply width, precision, flags"]
+    N --> O{"String is NULL?"}
+    O -->|Yes| Z1
+    O -->|No| P["Print with _putchar"]
+    P --> Q["Free result"]
+    Q --> B
+
+    %% Node styling
+    classDef start fill:#e0f7fa,stroke:#00796b,stroke-width:2px;
+    classDef decision fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+    classDef action fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px;
+    classDef endnode fill:#c8e6c9,stroke:#388e3c,stroke-width:2px;
+    classDef errornode fill:#ffcdd2,stroke:#d32f2f,stroke-width:2px;
+
+    %% Assign styles to nodes
+    class A start;
+    class B,C,K,O decision;
+    class D,E,F,G,H,I,J,L,M,N,P,Q action;
+    class Z endnode;
+    class Z1 errornode;
 
 ```
 ##  🏗️ <span id="instalation">Instalation</span>
