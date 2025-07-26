@@ -355,7 +355,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 | [`parsing_flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_flag_handler.c) | Extracts and stores formatting flags (`+`, `-`, `#`, space, `0`) from the format string. |
 | [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c) | Provides logic for interpreting and prioritizing active flags. |
 | [`parsing_width_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_width_handler.c) | Extracts width values from the format string or argument list. |
-| [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c) | Extracts and interprets precision values for formatting numbers and strings. |
+| [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c) | Interprets precision values for formatting numbers and strings. |
 | [`parsing_length_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_length_handler.c) | Extracts length modifiers (`l`, `h`, etc.) from the format string. |
 | [`char_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/char_handler.c) | Handles character output using `%c`. |
 | [`int_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/int_handler.c) | Handles signed integer formatting with `%d` and `%i`. |
