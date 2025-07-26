@@ -41,7 +41,8 @@ typedef char *(*handler_func_t)(format_specifier_t *, va_list);
  * This struct associates a single format specifier with the function
  * that will process and print the corresponding argument.
  */
-struct factory {
+struct factory
+{
 	char specifier;
 	handler_func_t handler;
 };
@@ -65,8 +66,10 @@ const char *length_handler(const char *str, format_specifier_t *format);
 /* --- Printing functions --- */
 /* Characters and strings */
 char *char_handler(format_specifier_t *format_specifier, va_list args);
-char *string_handler(format_specifier_t *format_specifier, va_list args);
-char *custom_string_handler(format_specifier_t *format_specifier, va_list args);
+char *string_handler(format_specifier_t *format_specifier,
+					 va_list args);
+char *custom_string_handler(format_specifier_t *format_specifier,
+							va_list args);
 char *reversed_string_handler(format_specifier_t *fmt, va_list args);
 char *rot13_string_handler(format_specifier_t *fmt, va_list args);
 
