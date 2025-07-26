@@ -5,7 +5,7 @@
 char *custom_hex_helper(unsigned char str);
 
 /**
- * custom_string_cpy - Copies a string from a va_list, converting
+ * custom_string_handler - Copies a string from a va_list, converting
  *                     non-printable characters to their
  *                     hexadecimal escape sequences.
  * @format_specifier: Pointer to format_specifier_t (unused).
@@ -16,7 +16,7 @@ char *custom_hex_helper(unsigned char str);
  *         or NULL if malloc fails.
  *         The caller is responsible for freeing the returned string.
  */
-char *custom_string_cpy(format_specifier_t *format_specifier, va_list args)
+char *custom_string_handler(format_specifier_t *format_specifier, va_list args)
 {
 	unsigned int i = 0, j = 0;
 	int size = 0;

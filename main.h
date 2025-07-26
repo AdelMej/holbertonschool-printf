@@ -12,6 +12,7 @@
 
 
 
+
 /**
  * struct format_specifier - Holds formatting flags and options
  * @flags: Bitmask of active flags.
@@ -28,23 +29,23 @@ struct format_specifier
 	int precision;
 	char specifier;
 };
-
 typedef struct format_specifier format_specifier_t;
 
+typedef char *(*handler_func_t)(format_specifier_t *, va_list);
+
 /**
- * struct format_factory - Maps a format specifier to a print function
- * @specifier: The format specifier character (e.g., 'd', 's').
- * @handler: Function pointer for printing that specifier.
+ * struct factory - Maps a format specifier to its handler function
+ * @specifier: The format specifier character (e.g., 'd', 's', 'X')
+ * @handler: Pointer to the function that handles the specifier
+ *
+ * This struct associates a single format specifier with the function
+ * that will process and print the corresponding argument.
  */
-struct format_factory
-{
+struct factory {
 	char specifier;
-	char *(*handler)(format_specifier_t *, va_list);
+	handler_func_t handler;
 };
-
-typedef struct format_factory factory_t;
-
-typedef char *(*print_func_t)(format_specifier_t *, va_list);
+typedef struct factory factory_t;
 
 /* --- Core printf interface --- */
 int _printf(const char *format, ...);
@@ -52,7 +53,7 @@ int _putchar(char c);
 void _putchar_flush(void);
 
 /* --- Format handler helpers --- */
-print_func_t get_print_function(char specifier);
+handler_func_t get_handler_function(char specifier);
 char *format_handler(format_specifier_t *format_specifier, va_list args);
 const char *flag_handler(const char *format_ptr, format_specifier_t *info);
 void init_format_info(format_specifier_t *info);
@@ -63,9 +64,9 @@ const char *length_handler(const char *str, format_specifier_t *format);
 
 /* --- Printing functions --- */
 /* Characters and strings */
-char *char_to_string(format_specifier_t *format_specifier, va_list args);
-char *string_cpy(format_specifier_t *format_specifier, va_list args);
-char *custom_string_cpy(format_specifier_t *format_specifier, va_list args);
+char *char_handler(format_specifier_t *format_specifier, va_list args);
+char *string_handler(format_specifier_t *format_specifier, va_list args);
+char *custom_string_handler(format_specifier_t *format_specifier, va_list args);
 char *reversed_string_handler(format_specifier_t *fmt, va_list args);
 char *rot13_string_handler(format_specifier_t *fmt, va_list args);
 
@@ -124,7 +125,7 @@ char *hexa_lower_to_string_h(va_list args);
 char *hexa_lower_to_string_hh(va_list args);
 
 /* --- pointer to string --- */
-char *pointer_to_string(format_specifier_t *format_specifier,
+char *pointer_handler(format_specifier_t *format_specifier,
 						va_list args);
 
 /* --- Helper --- */

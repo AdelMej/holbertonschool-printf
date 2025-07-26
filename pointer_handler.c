@@ -7,7 +7,7 @@ char *pointer_helper(unsigned long address, char *str);
 void nil_string(char *str);
 
 /**
- * pointer_to_string - Converts a pointer to a hexadecimal string
+ * pointer_handler - Converts a pointer to a hexadecimal string
  *                     prefixed with "0x".
  * @format_specifier: Pointer to format_specifier_t struct (unused).
  * @args: va_list containing the pointer to convert.
@@ -20,7 +20,7 @@ void nil_string(char *str);
  * Return: Pointer to a newly allocated string representing the pointer,
  *         or NULL if memory allocation fails.
  */
-char *pointer_to_string(format_specifier_t *format_specifier, va_list args)
+char *pointer_handler(format_specifier_t *format_specifier, va_list args)
 {
 	void *ptr = va_arg(args, void *);
 	unsigned long address, temp;

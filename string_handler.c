@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * string_cpy - Copies a string argument from a va_list.
+ * string_handler - Copies a string argument from a va_list.
  * @format_specifier: Pointer to the format specifier struct (unused).
  * @args:            Variadic argument list containing the string to copy.
  *
@@ -16,7 +16,7 @@
  * Return: Pointer to the newly allocated string copy,
  * or NULL if memory allocation fails.
  */
-char *string_cpy(format_specifier_t *format_specifier, va_list args)
+char *string_handler(format_specifier_t *format_specifier, va_list args)
 {
 	char *str = va_arg(args, char *);
 	char *cpy;
