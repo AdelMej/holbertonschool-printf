@@ -117,7 +117,6 @@ This modular architecture enables a flexible printf implementation that can evol
 <details>
 <summary>CLICK TO ENLARGE 😇</summary>
 
-- 📄 [Description](#description)
 - 🎓 [Objectives](#objectives)
 - 📋 [Flow Chart](#flowchart)
 - 📥 [Installation](#instalation)
@@ -130,12 +129,6 @@ This modular architecture enables a flexible printf implementation that can evol
 - 👷🏼‍♂️👷🏼‍♂️ [Authors](#authors)
 
 </details>
-
-
-## 📄 <span id="description">Description</span>
-
-printf_factory is a modular version of the standard C printf.
-It focuses on printing formatted strings, with an architecture that makes adding new specifiers and features easy.
 
 ## 🎓 <span id="objectives">Objectives</span>
 
