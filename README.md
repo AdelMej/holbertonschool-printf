@@ -20,8 +20,8 @@ This project includes:
 - **Mandatory format specifiers:**
   - `%c` - Character representation
   - `%s` - String representation
-  - `%d` - decimal representation
-  - `%i` - integer representation (same as decimal)
+  - `%d` - Decimal representation
+  - `%i` - Integer representation (same as decimal)
 
 - **Advanced format specifiers:**
   - `%b` – Binary representation
