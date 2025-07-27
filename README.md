@@ -18,7 +18,10 @@
 This project includes:
 
 - **Mandatory format specifiers:**
-  - `%c`, `%s`, `%d`, `%i`
+  - `%c` - Character representation
+  - `%s` - String representation
+  - `%d` - decimal representation
+  - `%i` - integer representation (same as decimal)
 
 - **Advanced format specifiers:**
   - `%b` – Binary representation
