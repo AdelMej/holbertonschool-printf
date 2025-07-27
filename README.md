@@ -373,7 +373,7 @@ This modular approach allows _printf to be easily extended without modifying cor
 | [`get_handler_function.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/get_handler_function.c) | Looks up the appropriate handler function for a given specifier. |
 | [`parsing_flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_flag_handler.c) | Extracts and stores formatting flags (`+`, `-`, `#`, space, `0`) from the format string. |
 | [`flag_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/flag_handler.c) | Provides logic for interpreting and prioritizing active flags. |
-| [`parsing_width_and_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_width_and_precision_handler.c) | Extracts width and preccison values from the format string or argument list. |
+| [`parsing_width_and_precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_width_and_precision_handler.c) | Extracts width and preccison values from the format string or argument list. |
 | [`precision_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/precision_handler.c) | Interprets precision values for formatting numbers and strings. |
 | [`parsing_length_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/parsing_length_handler.c) | Extracts length modifiers (`l`, `h`, etc.) from the format string. |
 | [`char_handler.c`](https://github.com/AdelMej/holbertonschool-printf/blob/main/char_handler.c) | Handles character output using `%c`. |
