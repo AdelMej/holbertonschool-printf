@@ -243,6 +243,9 @@ make clean
 
  - This will delete the binary and all .o object files to ensure a fresh build.
 ## 📄 <span id="restrictions">Restrictions</span>
+- Requirements :
+	- Ubuntu 20.04 LTS	
+	- gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 
 - The restrictions are as follows:
 	- `Must follow betty standard`
