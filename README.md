@@ -181,7 +181,7 @@ flowchart TD
     N --> O["Apply width, precision, flags"]
     O --> P{"String is NULL?"}
     P -->|Yes| Q["Return -1 (error)"]
-    P -->|No| R["Buffer or/and print with _putchar"]
+    P -->|No| R["Buffer or print with _putchar"]
     R --> S["Free result"]
     S --> B
 
