@@ -162,13 +162,13 @@ flowchart TD
     A["Start: _printf"] --> B{"More characters in format?"}
     B -->|No| Z["Flush buffer and return length"]
     B -->|Yes| C{"Character is '%'?"}
-    C -->|No| D["_putchar(char)"]
-    D --> E["Increment length"]
+    C -->|No| D["Buffer or print with _putchar(char)"]
+    D --> E["skip to next character"]
     E --> B
 
     C -->|Yes| F["Advance pointer and init struct"]
     F --> G["Parse flags"]
-    G --> H["Parse width"]
+    G --> H["Parse width and precision"]
     H --> I["Parse length"]
     I --> J["Set specifier"]
 
@@ -181,7 +181,7 @@ flowchart TD
     N --> O["Apply width, precision, flags"]
     O --> P{"String is NULL?"}
     P -->|Yes| Q["Return -1 (error)"]
-    P -->|No| R["Print with _putchar"]
+    P -->|No| R["Buffer or/and print with _putchar"]
     R --> S["Free result"]
     S --> B
 
